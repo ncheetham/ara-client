@@ -1,0 +1,21 @@
+<H2>Copy Questions for Interview: {{interview.interviewDate | date}} {{interview.team.name}}</H2>
+<div class="row col-sm-10">
+  <section>
+    <div class="tool-bar-button">
+      <button mat-raised-button type="button" color="primary" (click)="onBack()">Back</button>
+      <mat-button-toggle-group [(ngModel)]="source" aria-label="Font Style">
+        <mat-button-toggle mat-raised-button value="Interviews" (click)="onInterviews()">Interviews</mat-button-toggle>
+        <mat-button-toggle mat-raised-button value="Surveys" (click)="onSurveys()">Surveys</mat-button-toggle>
+      </mat-button-toggle-group>
+  </div>
+</section>
+</div>
+<div class="row"><span style="margin: 10px;"></span></div>
+<!-- Need a list of Inteviews. -->
+<div class="row" *ngIf="source == 'Interviews'">
+<app-interview-copy-list></app-interview-copy-list>
+</div>
+<!-- Need a list of Surveys-->
+<div class="row" *ngIf="source == 'Surveys'">
+  <app-survey-copy-list></app-survey-copy-list>
+</div>

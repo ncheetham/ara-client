@@ -1,0 +1,17 @@
+<div class="container" *ngIf="engagement">
+<!-- Client Logo -->
+<span class="pull-right">
+  <img [src]="engagement.client.url"  class="img-responsive"class="img-responsive" style="max-height: 50px; max-width: 120px;">
+</span>
+<!-- Client Name -->
+<h2>{{engagement.name}}</h2>
+<!-- Engagement Name -->
+<div class="row">
+<!-- Interview Count -->
+<app-interview-dashboard [engagementId]="engagement.engagementId"></app-interview-dashboard>
+</div>
+<div class="row">
+  <!-- Evidence Count -->
+  <app-evidence-dashboard [engagementId]="engagement.engagementId"></app-evidence-dashboard>
+  </div>
+</div>

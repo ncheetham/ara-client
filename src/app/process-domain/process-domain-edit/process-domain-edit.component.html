@@ -1,0 +1,18 @@
+<form mat-form #f="ngForm" (ngSubmit)="onAddProcessDomain(f)" >
+<!-- ID -->
+  <mat-form-field class="row col-sm-3">
+    <mat-label>ID</mat-label>
+    <input matInput readonly name="processDomainId" id="process-domain-id" [(ngModel)]="processDomain.processDomainId">
+  </mat-form-field>
+  <!-- Name -->
+  <mat-form-field class="row col-sm-10">
+    <mat-label>Name</mat-label>
+    <input matInput required name="name" id="process-domain-name" [(ngModel)]="processDomain.name">
+  </mat-form-field>
+  <div class="button-tool-bar">
+    <button mat-raised-button color="primary" [disabled]="!f.valid" >{{ editMode ? 'Update' : 'Add'}}</button>
+    <button mat-raised-button color="primary" type="button" (click)="onClear()">Clear</button>
+    <button mat-raised-button color="primary" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+  </div>
+
+</form>

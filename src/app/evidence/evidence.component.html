@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Evidence Log {{ (interview.interviewDate | date)  + ' ' + interview.team + ' - ' + interview.enteredByUser.firstName + ' ' + interview.enteredByUser.lastName}}</h2>
+  <div class="row col-sm-10">
+    <app-evidence-edit [interviewId]="interview.interviewId" [engagementId]="engagement.engagementId"></app-evidence-edit>
+  </div>
+  <div class="row col-sm-10">
+    <app-evidence-list [interviewId]="interview.interviewId" [engagementId]="engagement.engagementId"></app-evidence-list>
+  </div>
+</div>

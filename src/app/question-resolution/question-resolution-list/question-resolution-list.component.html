@@ -1,0 +1,19 @@
+<table mat-table [dataSource]="qrs" class="mat-elevation-z8 table">
+  <!-- ID -->
+  <ng-container matColumnDef="questionResolutionId">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.questionResolutionId}} </td>
+  </ng-container>
+  <!-- Name -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row class="element-row"
+  (click)="onSelect(row)"
+  [class.row-is-clicked]="selectedQr == row"
+  *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

@@ -1,0 +1,19 @@
+<form #f="ngForm" (submit)="onAddQuestionResolution(f)">
+  <!-- questionResolutionId -->
+  <mat-form-field class="row col-sm-3 form-group">
+    <mat-label>ID</mat-label>
+    <input matInput type="text" name="questionResolutionId" id="qr-id" readonly [(ngModel)]="questionResolution.questionResolutionId">
+  </mat-form-field>
+
+  <!-- Name -->
+  <mat-form-field class="row col-sm-10 form-group">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" name="name" id="qr-id" required [(ngModel)]="questionResolution.name">
+  </mat-form-field>
+
+  <div class="button-tool-bar">
+    <button mat-raised-button color="primary" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+    <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onDelete()">Delete</button>
+    <button mat-raised-button color="primary" type="button" (click)="onClear()">Clear</button>
+  </div>
+</form>

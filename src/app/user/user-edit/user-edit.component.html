@@ -1,0 +1,44 @@
+<h2>Users</h2>
+<div class="col-xs-12 form-group">
+  <form (ngSubmit)="onAddUser(f)" #f="ngForm">
+    <div class="row">
+    <!-- userId -->
+    <!-- <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput name="userId" id="user-id" [ngModel]="selectedUser.userId">
+    </mat-form-field> -->
+    <!-- email address -->
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput required type="email" name="emailaddress" id="user-email" [(ngModel)]="selectedUser.emailAddress">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <!-- first name -->
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput required type="text" name="firstName" id="user-firstName" [(ngModel)]="selectedUser.firstName" >
+    </mat-form-field>
+
+    <!-- last Name  -->
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput required type="text" name="lastName" id="user-lastName" [(ngModel)]="selectedUser.lastName" >
+    </mat-form-field>
+  </div>
+  <!-- Password -->
+  <!-- <div class="row">
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput required type="password" name="password" id="user-password" [(ngModel)]="selectedUser.password" >
+    </mat-form-field>
+  </div> -->
+  <div class="row">
+    <div class="button-tool-bar">
+      <button mat-raised-button color="primary" [disabled]="!f.valid" type="submit">{{editMode ? 'Update' : 'Add' }}</button>
+      <button mat-raised-button color="primary" type="button" (click)="onDelete()"  *ngIf="editMode">Delete</button>
+      <button mat-raised-button color="primary" type="button" (click)="onClear()">Clear</button>
+    </div>
+  </div>
+  </form>
+</div>

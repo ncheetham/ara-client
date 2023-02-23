@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Add Observation</h2>
+  <div class="row col-sm-10">
+      <form mat-form #f="ngForm">
+          <div class="row form-group">
+              <textarea rows="5" [(ngModel)]="observation.description">
+
+              </textarea>
+          </div>
+          <div class="row tool-bar-button">
+            <button mat-raised-button (click)="onAdd(f)"></button>
+          </div>
+      </form>
+  </div>
+</div>

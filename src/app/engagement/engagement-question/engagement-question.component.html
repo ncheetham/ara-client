@@ -1,0 +1,15 @@
+<div class="container" *ngIf="engagement">
+<h2>{{engagement.name}} - Questions</h2>
+<mat-form-field>
+  <mat-label>Select a Theme</mat-label>
+  <mat-select [(value)]="engagementThemeId" (selectionChange)="onEngagementThemeChanged()">
+    <mat-option *ngFor="let engagementTheme of engagementThemes" [value]="engagementTheme.engagementThemeId">{{engagementTheme.theme.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="row">
+  <app-engagement-question-edit [engagement]="engagement" [engagementThemeId]="engagementThemeId"></app-engagement-question-edit>
+</div>
+<div class="row col-sm-10">
+  <app-engagement-question-list [engagementThemeId]="engagementThemeId"></app-engagement-question-list>
+</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container" *ngIf="engagement">
+<h2>{{engagement.name}} - Evidence </h2>
+<div class="button-tool-bar">
+  <button mat-raised-button color="primary" (click)="onAddEvidence()">Add</button>
+  <button mat-raised-button color="primary" (click)="onBack()">Back</button>
+</div>
+<div class="row col-sm-10">
+  <app-evidence-list [engagementId]="engagement.engagementId"></app-evidence-list>
+</div>
+</div>
+

@@ -1,0 +1,10 @@
+<div class="container" *ngIf="client">
+<h2>{{client.name}} Engagements</h2>
+
+  <div class="row">
+    <app-client-engagement-edit [client]="this.client"></app-client-engagement-edit>
+  </div>
+  <div class="row">
+    <app-client-engagement-list [client]="this.client"></app-client-engagement-list>
+  </div>
+</div>

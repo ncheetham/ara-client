@@ -1,0 +1,18 @@
+<div class="row">
+  <form #f="ngForm" (submit)="onAddQuestion(f)">
+
+    <!-- Question-->
+    <div class="row col-sm-10">
+      <mat-form-field>
+        <mat-label>Question</mat-label>
+        <textarea matInput [(ngModel)]="question.description" name="description" rows="5" required></textarea>
+      </mat-form-field>
+    </div>
+
+  <div class="button-tool-bar">
+      <button mat-raised-button color="primary" [disabled]="!f.valid" (click)="onAddQuestion(f)">{{editMode ? 'Update' : 'Add'}}</button>
+      <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onDelete()">Delete</button>
+      <button mat-raised-button color="primary" type="button" (click)="onClear()">Clear</button>
+    </div>
+  </form>
+</div>

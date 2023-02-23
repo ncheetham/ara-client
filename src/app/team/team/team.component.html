@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <h2>{{engagement.name}} - Teams</h2>
+  </div>
+  <div class="button-tool-bar">
+    <button mat-raised-button type="button" color="primary" (click)="onImport()">Import</button>
+    <button mat-raised-button type="button" color="primary" (click)="onBack()">Back</button>
+  </div>
+  <div class="row">
+    <app-team-list [engagementId]="engagement.engagementId"></app-team-list>
+  </div>
+</div>

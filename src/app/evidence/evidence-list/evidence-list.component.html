@@ -1,0 +1,28 @@
+<table mat-table [dataSource]="evidences" class="mat-elevation-z8 table">
+  <!-- ID -->
+  <ng-container matColumnDef="evidenceId">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.evidenceId}} </td>
+  </ng-container>
+<!-- Evidence Name -->
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef> Name </th>
+  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+</ng-container>
+<!-- Evidence Type -->
+<ng-container matColumnDef="Type">
+  <th mat-header-cell *matHeaderCellDef> Type </th>
+  <td mat-cell *matCellDef="let element"> {{element.evidenceType.name}} </td>
+</ng-container>
+<!-- Status -->
+<ng-container matColumnDef="Status">
+  <th mat-header-cell *matHeaderCellDef> Status </th>
+  <td mat-cell *matCellDef="let element"> {{element.evidenceStatus.name}} </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row class="element-row"
+(click)="onSelect(row)"
+[class.row-is-clicked]="selectedEvidence == row"
+*matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

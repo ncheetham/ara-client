@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-xs-12">
+  <form (ngSubmit)="onAddClient(f)" #f="ngForm">
+    <div class="row">
+      <div class="col-sm-5 form-group">
+        <input
+          type="hidden"
+          id="client-id"
+          class="form-control"
+          name="clientId"
+          [(ngModel)]="selectedClient.clientId" placeholder="id"
+          readonly>
+      </div>
+      </div>
+    <div class="row">
+      <div class="col-sm-5 form-group">
+        <label for="client-name">Client name:</label>
+        <input
+          type="text"
+          id="client-name"
+          class="form-control"
+          name="name"
+          [(ngModel)]="selectedClient.name" placeholder="name"
+          required>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="client-url">Url:</label>
+          <input
+            type="text"
+            id="client-url"
+            class="form-control"
+            name="url"
+            [(ngModel)]="selectedClient.url" placeholder="url">
+        </div>
+      </div>
+
+        <div class="button-tool-bar">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add'}}</button>
+          <button mat-raised-button color="primary" *ngIf="editMode" (click)="onDelete()">Delete</button>
+          <button mat-raised-button color="primary" type="button" (click)="onCancel()" >Back</button>
+          <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onShowEngagements()">Engagements</button>
+        </div>
+</form>
+</div>
+</div>

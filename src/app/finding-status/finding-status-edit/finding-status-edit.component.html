@@ -1,0 +1,17 @@
+<form #f="ngForm" (ngSubmit)="onAddFindingStatus(f)">
+  <!-- Finding Status ID -->
+  <mat-form-field class="row col-sm-3">
+    <mat-label>ID</mat-label>
+    <input matInput readonly name="findingStatusId" [(ngModel)]="findingStatus.findingStatusId" >
+  </mat-form-field>
+  <!-- Name -->
+  <mat-form-field class="row col-sm-10">
+    <mat-label>Name</mat-label>
+    <input matInput required name="name" [(ngModel)]="findingStatus.name">
+  </mat-form-field>
+  <div class="button-tool-bar">
+    <button mat-raised-button color="primary" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+    <button mat-raised-button color="primary" *ngIf="editMode" type="button" (click)="onDelete()">Delete</button>
+    <button mat-raised-button color="primary" type="button" (click)="onClear()">Clear</button>
+  </div>
+</form>

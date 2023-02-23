@@ -1,0 +1,43 @@
+<form (ngSubmit)="onAddInterviewee(f)" #f="ngForm">
+
+  <div class="row col-sm-5">
+    <mat-form-field hidden>
+      <mat-label>ID</mat-label>
+      <input matInput readonly name="intervieweeId" id="interviewee-intervieweeId" [(ngModel)]="interviewInterviewee.interviewee.intervieweeId">
+    </mat-form-field>
+  </div>
+
+  <div class="row col-sm-5">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput required name="firstName" id="interviewee-firstname" [(ngModel)]="interviewInterviewee.interviewee.firstName">
+    </mat-form-field>
+  </div>
+
+   <div class="row col-sm-5">
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput required name="lastName" id="interviewee-lastname" [(ngModel)]="interviewInterviewee.interviewee.lastName">
+    </mat-form-field>
+  </div>
+
+  <div class="row col-sm-8">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput name="title" id="interviewee-title" [(ngModel)]="interviewInterviewee.interviewee.title">
+    </mat-form-field>
+  </div>
+
+  <div class="row col-sm-8">
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <input matInput  name="role" id="interviewee-role" [(ngModel)]="interviewInterviewee.interviewee.role">
+    </mat-form-field>
+  </div>
+
+  <div class="button-tool-bar">
+    <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+    <button type="button" mat-raised-button color="primary" (click)="onBack()">Back</button>
+    <button type="button" mat-raised-button color="primary" *ngIf="editMode" (click)="onDelete()">Delete</button>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<tr>
+<td>
+    <a
+    style="cursor: pointer;"
+    [routerLink]="[client.clientId]"
+    routerLinkActive="active">{{client.clientId}}</a>
+</td>
+  <td>
+    {{client.name}}
+  </td>
+  <td>
+    <img [src]="client.url"  alt="{{client.name}}" class="img-responsive" style="max-height: 50px;">
+  </td>
+</tr>

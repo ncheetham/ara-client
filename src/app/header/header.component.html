@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Synechron</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" aria-current="page" href="#" >Clients</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/engagements" >Engagements</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isAuthenticated">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Maintenance
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/evidencestatus" href="#">Evidence Statuses</a></li>
+            <li><a class="dropdown-item" routerLink="/evidencetypes" href="#">Evidence Types</a></li>
+            <li><a class="dropdown-item" routerLink="/findingstatus" href="#">Finding Status</a></li>
+            <li><a class="dropdown-item" routerLink="/meetingtypes" href="#">Meeting Types</a></li>
+            <li><a class="dropdown-item" routerLink="/process" href="#">Process</a></li>
+            <li><a class="dropdown-item" routerLink="/processdomain" href="#">Process Domain</a></li>
+            <li><a class="dropdown-item" routerLink="/qr" href="#">Question Resolution</a></li>
+            <li><a class="dropdown-item" routerLink="/qrm" href="#">Question Resolution Methods</a></li>
+            <li><a class="dropdown-item" routerLink="/themes" href="#">Themes</a></li>
+            <li><a class="dropdown-item" routerLink="/tooltech" href="#">Tools & Technologies</a></li>
+            <li><a class="dropdown-item" routerLink="/users" href="#">Users</a></li>
+            <!-- <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#"></a></li> -->
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated" >
+          <a class="nav-link" routerLink="/auth">Authenticate</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <form class="d-flex" role="search" *ngIf="isAuthenticated" >
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav navbar-right" *ngIf="isAuthenticated" >
+        <li class="nav-item"><a href="#" class="nav-link" (click)="onLogout()">Logout</a></li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</nav>

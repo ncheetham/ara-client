@@ -1,0 +1,18 @@
+<form (ngSubmit)="onAddEvidenceStatus(f)" #f="ngForm">
+  <!-- EvidenceStatusId -->
+  <mat-form-field class="row col-sm-3">
+    <mat-label>ID</mat-label>
+    <input matInput readonly [(ngModel)]="evidenceStatus.evidenceStatusId" name="evidenceStatusId" id="evidencestatus-evidencestatusid">
+  </mat-form-field>
+  <!-- Name -->
+  <mat-form-field class="row col-sm-10">
+    <mat-label>Name</mat-label>
+    <input matInput required [(ngModel)]="evidenceStatus.name" name="name" id="evidencestatus-name">
+  </mat-form-field>
+  <div class="button-tool-bar">
+    <button mat-raised-button color="primary" [disabled]="!f.valid">{{editMode ? 'Update': 'Add'}}</button>
+    <button mat-raised-button color="primary" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+    <button mat-raised-button color="primary" type="button" (click)="onClear()">Clear</button>
+  </div>
+</form>
+

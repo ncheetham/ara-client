@@ -1,0 +1,33 @@
+<div class="row">
+  <h2>Evidence</h2>
+</div>
+<div class="row">
+  <p>Evidence Count: {{evidences.length}}</p>
+</div>
+<div class="row">
+  <div class="row">
+  <div class="button-tool-bar">
+      <button mat-raised-button color="primary" (click)="onViewEvidence()">View</button>
+      <button mat-raised-button color="primary" (click)="onAddEvidence()">Add</button>
+    </div>
+  </div>
+  <div class="row">
+    <div id="status" style="width: 400px;height:400px;"></div>
+    <div id="type" style="width: 400px;height:400px;"></div>
+    <!-- <div id="evidencetype" style="width: 400px;height:400px;"></div>
+    <table mat-table [dataSource]="status" class="table mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef> Count </th>
+        <td mat-cell *matCellDef="let element"> {{element.value }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row class="element-row"
+      *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> -->
+</div>

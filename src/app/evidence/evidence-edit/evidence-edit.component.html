@@ -1,0 +1,66 @@
+<form (ngSubmit)="onAddEvidence(f)" #f="ngForm">
+  <!-- EvidenceId  -->
+  <div class="row col-sm-3" hidden>
+  <mat-form-field>
+    <mat-label></mat-label>
+    <input matInput readonly name="evidenceId" id="evidence-id" [(ngModel)]="evidence.evidenceId">
+  </mat-form-field>
+</div>
+  <!-- evidenceTypeId -->
+  <div class="row col-sm-5">
+  <mat-form-field>
+    <mat-label>Evidence Type</mat-label>
+    <mat-select id="evidence-type" class="form-control" name="evidenceTypeId" [(ngModel)]="evidence.evidenceType.evidenceTypeId" required>
+      <mat-option *ngFor="let type of evidenceTypes" [value]="type.evidenceTypeId">
+        {{type.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <!-- name -->
+  <div class="row col-sm-10">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput required name="name" id="evidence-name" [(ngModel)]="evidence.name">
+  </mat-form-field>
+</div>
+  <!-- description -->
+  <div class="row col-sm-10">
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="5" name="description" id="evidence-description" [(ngModel)]="evidence.description"></textarea>
+  </mat-form-field>
+</div>
+  <!-- evidenceStatusId -->
+  <div class="row col-sm-5">
+  <mat-form-field>
+    <mat-label>Evidence Status</mat-label>
+    <mat-select id="evidence-status" class="form-control" name="evidenceStatusId" [(ngModel)]="evidence.evidenceStatus.evidenceStatusId"  required>
+      <mat-option *ngFor="let status of evidenceStatuses" [value]="status.evidenceStatusId">
+        {{status.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <!-- interview -->
+  <!-- <div class="row">
+    <div class="row col-sm-5">
+      <mat-form-field>
+        <mat-label>Interview</mat-label>
+        <mat-select id="evidence-interview" class="form-control" name="interviewId" [(ngModel)]="evidence.interviewId" readonly>
+          <mat-option *ngFor="let interview of interviews" [value]="interview.interviewId">
+            {{ (interview.interviewDate | date) + ' ' + interview.enteredByUser.firstName + ' ' + interview.enteredByUser.lastName + ' ' + interview.team }}
+          </mat-option>
+        </mat-select>
+        <input matInput readonly  value="{{ (interview.interviewDate | date) + ' ' + interview.enteredByUser.firstName + ' ' + interview.enteredByUser.lastName + ' ' + interview.team }}">
+      </mat-form-field>
+    </div>
+</div> -->
+  <div class="button-tool-bar">
+    <button mat-raised-button color="primary" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+    <button mat-raised-button color="primary" type="button" (click)="onBack()">Back</button>
+    <button mat-raised-button color="primary" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+  </div>
+</form>
+
+

@@ -1,0 +1,49 @@
+<div class="row">
+<table mat-table [dataSource]="interviews" class="mat-elevation-z8 table">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Number Column -->
+  <ng-container matColumnDef="interviewId">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.interviewId}} </td>
+  </ng-container>
+
+  <!-- Date -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.interviewDate | date}} </td>
+  </ng-container>
+
+  <!-- Interviewer -->
+  <ng-container matColumnDef="interviewer">
+    <th mat-header-cell *matHeaderCellDef> Interviewer </th>
+    <td mat-cell *matCellDef="let element"> {{ (element.enteredByUser.firstName + ' ' + element.enteredByUser.lastName) }} </td>
+  </ng-container>
+
+<!-- Meeting Type -->
+<ng-container matColumnDef="team">
+  <th mat-header-cell *matHeaderCellDef> Team </th>
+  <td mat-cell *matCellDef="let element"> {{element.team.name}} </td>
+</ng-container>
+
+  <!-- Meeting Type -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.meetingType.name }} </td>
+  </ng-container>
+
+  <!-- Status -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.interviewStatus.name }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row class="element-row"
+  (click)="onSelect(row)"
+  [class.row-is-clicked]="selectedInterview == row"
+  *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>

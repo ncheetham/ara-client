@@ -1,0 +1,11 @@
+<div class="container" *ngIf="engagement">
+  <div class="row">
+    <h2>{{ selectedInterview.interviewDate | date}}  Interview</h2>
+    <div class="row">
+    <div class="col-xs-12">
+      <app-question-edit [engagement]="engagement" [interviewId]="selectedInterview.interviewId"></app-question-edit>
+    </div>
+    </div>
+    <app-question-list [interviewId]="selectedInterview.interviewId"></app-question-list>
+  </div>
+</div>

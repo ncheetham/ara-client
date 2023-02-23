@@ -1,0 +1,21 @@
+<div class="row" *ngIf="engagementThemeId">
+<table mat-table [dataSource]="questions" class="table mat-elevation-z8">
+<!-- Question Id-->
+<ng-container matColumnDef="questionId">
+  <th mat-header-cell *matHeaderCellDef> ID </th>
+  <td mat-cell *matCellDef="let element"> {{element.questionId}} </td>
+</ng-container>
+<!-- Question -->
+<ng-container matColumnDef="description">
+  <th mat-header-cell *matHeaderCellDef> Question </th>
+  <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row class="element-row"
+(click)="onSelect(row)"
+[class.row-is-clicked]="selectedQuestion == row"
+*matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
