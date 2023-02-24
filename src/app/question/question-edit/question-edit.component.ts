@@ -95,7 +95,7 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
         iq.interviewId = this.interviewId ;
         iq.question.questionId = q.questionId ;
         iq.questionNumber = this.nextQuestionNumber++ ;
-        this.interviewQuestionService.addQuestion(iq).subscribe() ;
+        this.interviewQuestionService.addInterviewQuestion(iq).subscribe() ;
       }
       ) ;
     }
@@ -125,41 +125,25 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
   onDownloadQuestions() {
 
     // Build the Spreadsheet
-    //this.interviewQuestionService.downloadQuestions(this.interviewId).subscribe(
-     // (response: any)=>
-     // {
+    this.interviewQuestionService.downloadQuestions(this.interviewId).subscribe(
+    (response: any) =>
+      {
 
-       // saveAs(new Blob([response], {type: 'application/octet-stream'})) ;
-       // let blob:any = new Blob([response], {type: 'application/octet-stream'});
-       // const url=window.URL.createObjectURL(blob) ;
+        const contentDisposition = response.headers.get('Content-Disposition');
+        console.log("content Disposition: " + contentDisposition) ;
+        let fileName = contentDisposition.split(';')[1].split('filename')[1].split('=')[1].trim();
+        console.log(fileName) ;
 
-      const data = 'some text';
-      const blob = new Blob([data], { type: 'application/octet-stream' });
-      //  const downloadLink = document.createElement('a');
-      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-      //  downloadLink.href = this.fileUrl ;
-      //  downloadLink.click() ;
+        let blob = new Blob([response.body], {type: 'application/octet-stream'} ) ;
 
-   //   }
-   // );
+        let downloadLink = document.createElement('a');
+        downloadLink.download=fileName ;
+        downloadLink.href = window.URL.createObjectURL(blob) ;
+        downloadLink.click() ;
 
+      }
+    );
 
-      // {
-
-      //     const downloadLink = document.createElement('a');
-      //     downloadLink.href = URL.createObjectURL(new Blob([response.body], { type: response.body.type }));
-
-      //     const contentDisposition = response.headers.get('content-disposition');
-      //     const fileName = contentDisposition.split(';')[1].split('filename')[1].split('=')[1].trim();
-      //     downloadLink.download = fileName;
-      //     downloadLink.click();
-      // })
-
-          //this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL());
-
-
-      //}
-    //)
   }
 
   // Import from a spreadsheet.

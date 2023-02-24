@@ -7,4 +7,11 @@ export class InterviewQuestionInterviewee{
   interviewQuestion: InterviewQuestion ;
   interviewee: Interviewee ;
 
+  constructor() {
+    this.interviewQuestionIntervieweeId = 0 ;
+    this.interviewQuestion = new InterviewQuestion() ;
+    this.interviewee = new Interviewee() ;
+  }
+
+
 }

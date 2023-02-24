@@ -29,9 +29,7 @@
       <button mat-raised-button color="primary" type="button" (click)="onBack()">Back</button>
       <button mat-raised-button color="primary" type="button" (click)="onCopy()">Copy From...</button>
       <button mat-raised-button color="primary" type="button" (click)="onImport()">Import</button>
-      <button mat-link-button type="button" (click)="onDownloadQuestions()" >Download</button>
-      <a [href]="fileUrl" download="file.txt">DownloadFile</a>
-      <!-- <a  [href]="fileUrl" >Download</a> -->
+      <a mat-raised-button type="button" (click)="onDownloadQuestions()" >Download</a>
     </div>
   </form>
 </div>

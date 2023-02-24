@@ -17,9 +17,6 @@ export class InterviewQuestionService {
     headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
   }
 
-  httpBlobOptions = {
-    headers: new HttpHeaders({ 'content-Type' : 'application/octet-stream'})
-  }
 
   interviewQuestionChanged = new Subject<boolean>() ;
   startedEditing = new Subject<number>() ;
@@ -43,9 +40,9 @@ export class InterviewQuestionService {
     const url = `${this.baseUrl}excel/${interviewId}` ;
 
     console.log(url) ;
-    return this.httpClient.get<any>(url, this.httpBlobOptions).pipe(
+    return this.httpClient.get<any>(url, {observe: 'response', responseType: 'arraybuffer' as 'json'}).pipe(
       tap(_ => {
-        console.log("downloadQuestions threw error!") ;
+
         catchError(this.handleError('downloadQuestions', [])) ;
       })
     );
@@ -108,9 +105,9 @@ export class InterviewQuestionService {
   }
 
   // Add a Question.
-  public addQuestion(question: InterviewQuestion): Observable<InterviewQuestion> {
+  public addInterviewQuestion(question: InterviewQuestion): Observable<InterviewQuestion> {
 
-    console.log("Adding Interview Question:"+ JSON.stringify(question)) ;
+    //console.log("Adding Interview Question:"+ JSON.stringify(question)) ;
 
     return this.httpClient.post<InterviewQuestion>(this.baseUrl, question, this.httpOptions).pipe(
       tap(_ => {
@@ -124,7 +121,7 @@ export class InterviewQuestionService {
   // Update a question
   public updateInterviewQuestion(questionId: number, question: InterviewQuestion): Observable<InterviewQuestion> {
 
-      console.log("Updated Question " + JSON.stringify(question)) ;
+      //console.log("Updated Question " + JSON.stringify(question)) ;
 
       const url = `${this.baseUrl}${questionId}` ;
 

@@ -103,24 +103,18 @@ export class ConductInterviewComponent implements OnInit {
 
      // Add the answerers.
 
-     console.log(JSON.stringify(this.answerers.value)) ;
-    const answerers  = this.answerers.value?.split(",").map(Number); ;
+    console.log(this.answerers.value) ;
+    const answerers = this.answerers.value?.toString().split(",").map(Number);
+    console.log("Split answerers: " + answerers) ;
     answerers?.forEach(intervieweeId => {
+      console.log('parsed: '+intervieweeId) ;
        const ai = new InterviewQuestionInterviewee() ;
        ai.interviewee.intervieweeId = intervieweeId ;
-       ai.interviewQuestion = interviewquestion ;
+       ai.interviewQuestion.interviewId = interviewquestion.interviewQuestionId ;
        interviewquestion.answerers.push(ai) ;
     })
 
-    console.log("Adding Answer:"+ JSON.stringify(interviewquestion)) ;
-
-
-    if(interviewquestion.interviewQuestionId == 0){
-      // Save the i
-      return this.iqService.addQuestion(interviewquestion) ;
-    } else {
       return this.iqService.updateInterviewQuestion(interviewquestion.interviewQuestionId, interviewquestion) ;
-    }
 
   }
 
