@@ -1,0 +1,25 @@
+  <div class="container">
+  <div class="row col-sm-1">
+    <h2>Interviewees</h2>
+  </div>
+  <div class="row col-sm-2">
+    <div class="button-tool-bar">
+        <button mat-raised-button color="primary" (click)="onViewInterviewees()">View</button>
+        <button mat-raised-button color="primary" (click)="onAddInterviewee()">Add</button>
+      </div>
+    </div>
+  <div class="row col-md-10">
+   <angular-org-chart [nodeTemplate]="nodeTemplate" [data]="data"></angular-org-chart>
+
+      <!-- Node Template -->
+  <ng-template #nodeTemplate let-node>
+    <div class="chart-node">
+      <!-- <img [src]="node?.image"> -->
+      <div class="name">{{node?.name}}</div>
+      <div class="description">{{node?.title}} </div>
+      <!-- An ugly button to fold/unfold -->
+      <div *ngIf="node.children.length" (click)="node.hideChildren = !node.hideChildren" class="tree-fold-btn">{{node.hideChildren ? '+' : '-'}}</div>
+  </div>
+  </ng-template>
+</div>
+</div>

@@ -1,39 +1,42 @@
 <div class="row">
   <div class="col-xs-12">
   <form (ngSubmit)="onAddClient(f)" #f="ngForm">
-    <div class="row">
-      <div class="col-sm-5 form-group">
+    <div class="row" hidden>
+        <mat-form-field class="col-sm-5 form-group" appearance="fill">
+          <mat-label>Date</mat-label>
         <input
-          type="hidden"
+          matInput
           id="client-id"
           class="form-control"
           name="clientId"
           [(ngModel)]="selectedClient.clientId" placeholder="id"
           readonly>
-      </div>
-      </div>
+     </mat-form-field>
+     </div>
     <div class="row">
-      <div class="col-sm-5 form-group">
-        <label for="client-name">Client name:</label>
+      <mat-form-field class="col-sm-5 form-group" appearance="fill">
+        <mat-label for="client-name">Client name:</mat-label>
         <input
           type="text"
+          matInput
           id="client-name"
           class="form-control"
           name="name"
           [(ngModel)]="selectedClient.name" placeholder="name"
           required>
-      </div>
+      </mat-form-field>
       </div>
       <div class="row">
-        <div class="col-sm-5 form-group">
-          <label for="client-url">Url:</label>
+        <mat-form-field class="col-sm-5 form-group" appearance="fill">
+          <mat-label for="client-url">Url:</mat-label>
           <input
+            matInput
             type="text"
             id="client-url"
             class="form-control"
             name="url"
             [(ngModel)]="selectedClient.url" placeholder="url">
-        </div>
+          </mat-form-field>
       </div>
 
         <div class="button-tool-bar">

@@ -1,9 +1,9 @@
-import { InterviewQuestionInterviewee } from "./interviewquestioninterviewee";
+import { Interview } from "./interview/interview";
 import { Question } from "./question/question";
 
 export class InterviewQuestion {
   interviewQuestionId: number ;
-  interviewId: number ;
+  interview: Interview ;
   question: Question ;
   answer: string ;
   notes: string ;
@@ -12,12 +12,11 @@ export class InterviewQuestion {
   resolutionMethodId: number;
   evidenceTypeId: number  ;
   questionNumber: number ;
-  answerers: InterviewQuestionInterviewee[] ;
 
   constructor() {
     this.interviewQuestionId = 0 ;
     this.question = new Question() ;
-    this.answerers = [] ;
+    this.interview = new Interview() ;
   }
 
 }

@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of, Subject, tap } from 'rxjs';
 import { ChartData } from './engagementInterviewsummaryvo';
 import { Interview } from './interview/interview';
+import { InterviewReviewVO } from './interviewreview';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterviewService {
+
 
   selectedInterview = new Subject<number>() ;
 
@@ -34,6 +36,18 @@ export class InterviewService {
       })
     );
 
+  }
+
+   // Find the interview answers and answerers.
+   public findInterviewWithDetails(interviewId: number): Observable<InterviewReviewVO> {
+
+    const url = `${this.baseUrl}interviewreview/${interviewId}`;
+
+    return this.httpClient.get<InterviewReviewVO>(url).pipe(
+      tap(_ => {
+        catchError(this.handleError('findInterviewsByEngagementWithDetail', [])) ;
+      })
+    );
   }
 
   public findInterviewSummaryByEngagementId(engagementId: number): Observable<ChartData[]> {

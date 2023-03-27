@@ -35,6 +35,14 @@ import { UserComponent } from './user/user.component';
 import { InterviewViewComponent } from './interview/interview-view/interview-view.component';
 import { AuthGuardService } from './shared/auth/auth-guard.service';
 import { QuestionCopyComponent } from './question/question-copy/question-copy.component';
+import { InterviewReviewComponent } from './interview/interview-review/interview-review.component';
+import { ImpactViewComponent } from './impact/impact-view/impact-view.component';
+import { ProbabilityViewComponent } from './probability/probability-view/probability-view.component';
+import { FindingEditComponent } from './finding/finding-edit/finding-edit.component';
+import { FindingViewComponent } from './finding/finding-view/finding-view.component';
+import { IntervieweeAllViewComponent } from './interviewee/interviewee-all-view/interviewee-all-view.component';
+import { IntervieweeEditComponent } from './interviewee/interviewee-edit/interviewee-edit.component';
+import { EngagementIntervieweeComponent } from './interviewee/engagement-interviewee/engagement-interviewee.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
@@ -210,7 +218,15 @@ const routes: Routes = [
 {path: 'addengagementevidence/:id', component: EngagementEvidenceComponent, canActivate: [AuthGuardService]},
 {path: 'viewevidence/:id', component: EvidenceViewComponent, canActivate: [AuthGuardService]},
 {path: 'viewinterview/:id', component: InterviewViewComponent, canActivate: [AuthGuardService]},
-{path: 'questioncopy/:id', component: QuestionCopyComponent, canActivate: [AuthGuardService]}
+{path: 'questioncopy/:id', component: QuestionCopyComponent, canActivate: [AuthGuardService]},
+{path: 'interviewreview/:id', component: InterviewReviewComponent, canActivate: [AuthGuardService]},
+{path: 'impact', component: ImpactViewComponent, canActivate: [AuthGuardService]},
+{path: 'probability', component: ProbabilityViewComponent, canActivate: [AuthGuardService]},
+{path: 'editfinding/:id', component: FindingEditComponent, canActivate: [AuthGuardService]},
+{path: 'addengagementfinding/:engagementid', component: FindingEditComponent, canActivate: [AuthGuardService]},
+{path: 'viewfindings/:id', component: FindingViewComponent, canActivate: [AuthGuardService]},
+{path: 'viewintervieweesall/:id', component: IntervieweeAllViewComponent, canActivate: [AuthGuardService]},
+{path: 'addinterviewee/:id', component: EngagementIntervieweeComponent, canActivate: [AuthGuardService]},
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 <div class="container" *ngIf="interview">
   <div class="row">
-    <h2>{{interview.team.name}} {{interview.interviewDate | date}} - {{interview.meetingType.name}}</h2>
+    <app-interview-header [interview]="interview"></app-interview-header>
     <div class="button-tool-bar">
       <button mat-raised-button color="primary" (click)="onCancel()">Back</button>
     </div>

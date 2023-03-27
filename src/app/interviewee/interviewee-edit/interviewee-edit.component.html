@@ -35,6 +35,28 @@
     </mat-form-field>
   </div>
 
+  <!-- <div class="row col-sm-8">
+      <mat-form-field class="col-sm-5">
+        <mat-label>Reports To</mat-label>
+        <input type="text" matInput id="interviewee-reportstoid"  name="reportsToId" [(ngModel)]="interviewInterviewee.interviewee.reportsToId" [matAutocomplete]="auto" [value]="interviewInterviewee.interviewee.reportsToId">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let interviewee of filteredOptions | async" [value]="interviewee.intervieweeId">
+            {{interviewee.fullName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  </div> -->
+
+  <mat-form-field>
+    <mat-label>Reports To</mat-label>
+    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" [value]="interviewInterviewee.interviewee.reportsToId">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.fullName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
   <div class="button-tool-bar">
     <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
     <button type="button" mat-raised-button color="primary" (click)="onBack()">Back</button>

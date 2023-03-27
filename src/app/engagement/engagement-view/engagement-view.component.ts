@@ -17,10 +17,9 @@ export class EngagementViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-      // Get the Engagment.
-      const engagementId = Number(this.route.snapshot.paramMap.get('id'));
-        this.engagementService.findEngagement(engagementId).subscribe(
-          engagement => this.engagement = engagement);
+    const engagementId = Number(this.route.snapshot.paramMap.get('id'));
+    this.engagementService.findEngagement(engagementId).subscribe(
+      engagement => this.engagement = engagement);
   }
 
 

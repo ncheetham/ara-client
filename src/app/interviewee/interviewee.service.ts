@@ -1,12 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, Subject, tap } from 'rxjs';
-import { Interviewee } from './interviewee/interviewee';
+import { Interviewee } from './interviewee';
+import { IntervieweeStatusVO } from './intervieweestatus';
+import { IntervieweeVO } from './intervieweevo';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntervieweeService {
+
 
   private baseUrl = '/api/interviewee/' ;
 
@@ -44,8 +48,23 @@ export class IntervieweeService {
       })
     );
 
+  }
+
+  // Find the interviewees Status by Engagement.
+  findIntervieweeStatusByEngagement(engagementId: number): Observable<IntervieweeStatusVO[]> {
+
+    const url = `${this.baseUrl}engagementstatus/${engagementId}` ;
+
+    return this.httpClient.get<IntervieweeStatusVO[]>(url).pipe(
+      tap(_=> {
+        catchError(this.handleError("findIntervieweeStatusByEngagement", []));
+      })
+    )
+
 
   }
+
+
 
   // Find All Interviewees by Engagement
   findIntervieweeByEngagement(engagementId: number): Observable<Interviewee[]> {
@@ -59,6 +78,21 @@ export class IntervieweeService {
     ) ;
 
   }
+
+  // Find OrgChart by Engagement
+  findOrgChartByEngagement(engagementId: number): Observable<IntervieweeVO[]> {
+
+    const url = `${this.baseUrl}orgchart/engagement/${engagementId}` ;
+
+
+    return this.httpClient.get<IntervieweeVO[]>(url).pipe(
+      tap(_ => {
+        catchError(this.handleError('findOrgChartByEngagement', []))
+      })
+    );
+
+  }
+
 
   // Find all Interviewees by Interview
   findIntervieweeByInterview(interviewId: number): Observable<Interviewee[]> {
@@ -221,6 +255,20 @@ addIntervieweeToEngagement(engagementId: number, interviewee: Interviewee): Obse
       })
     ) ;
 
+  }
+
+  // Download Excel Template
+  downloadTemplate(engagementId: number): Observable<any> {
+
+    const url = `${this.baseUrl}excel/${engagementId}` ;
+
+    console.log(url) ;
+    return this.httpClient.get<any>(url, {observe: 'response', responseType: 'arraybuffer' as 'json'}).pipe(
+      tap(_ => {
+
+        catchError(this.handleError('downloadQuestions', [])) ;
+      })
+    );
   }
 
 

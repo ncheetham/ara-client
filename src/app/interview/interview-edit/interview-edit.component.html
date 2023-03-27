@@ -67,7 +67,7 @@
         <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onViewQuestions()" >Questions ({{questionCount}})</button>
         <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onViewEvidence()" >Evidence</button>
         <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onInterviewees()" >Interviewees ({{intervieweeCount}})</button>
-        <button mat-raised-button color="primary" type="button" *ngIf="editMode && (questionCount > 0) && (intervieweeCount > 0)" (click)="onConductInterview()" >Conduct</button>
+        <button mat-raised-button color="primary" type="button" *ngIf="editMode && (questionCount > 0) && (intervieweeCount > 0) && (selectedInterview.interviewStatus.interviewStatusId < 3)" (click)="onConductInterview()" >Conduct</button>
       </div>
     </div>
   </form>

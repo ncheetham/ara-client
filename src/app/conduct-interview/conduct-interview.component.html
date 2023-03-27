@@ -19,7 +19,7 @@
     </div>
     <mat-form-field class="col-sm-5">
       <mat-label>Answered By</mat-label>
-      <mat-select [formControl]="answerers" multiple>
+      <mat-select name="answerers" [(ngModel)]="answerers" multiple>
         <mat-option *ngFor="let interviewee of interviewees" [value]="interviewee.intervieweeId">{{interviewee.fullName}}</mat-option>
       </mat-select>
     </mat-form-field>

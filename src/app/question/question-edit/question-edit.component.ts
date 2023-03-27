@@ -92,7 +92,7 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
 
         // Create a new Interview Question.
         const iq = new InterviewQuestion() ;
-        iq.interviewId = this.interviewId ;
+        iq.interview.interviewId = this.interviewId ;
         iq.question.questionId = q.questionId ;
         iq.questionNumber = this.nextQuestionNumber++ ;
         this.interviewQuestionService.addInterviewQuestion(iq).subscribe() ;

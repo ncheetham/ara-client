@@ -1,9 +1,9 @@
 import { Location } from '@angular/common';
-import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Subscription, throwIfEmpty } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl, NgForm } from '@angular/forms';
+import { map, Observable, startWith, Subscription, throwIfEmpty } from 'rxjs';
 import { InterviewIntervieweeService } from 'src/app/interview-interviewee.service';
-import { IntervieweeService } from 'src/app/interviewee.service';
+import { IntervieweeService } from 'src/app/interviewee/interviewee.service';
 import { InterviewInterviewee } from 'src/app/interviewinterviewee';
 import { Interviewee } from '../interviewee';
 
@@ -19,7 +19,12 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
   editMode = false ;
   interviewInterviewee: InterviewInterviewee = new InterviewInterviewee() ;
   intervieweeSelectedSubscription: Subscription ;
+  superiors: Interviewee[] = []
+  myControl = new FormControl<string | Interviewee>('');
+  filteredOptions: Observable<Interviewee[]>;
+
   @Input() interviewId: number ;
+  @Input() engagementId: number ;
 
   constructor(private intervieweeService: IntervieweeService, private iiService: InterviewIntervieweeService, private location: Location) { }
 
@@ -39,6 +44,23 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
 
       )
 
+      // Get the list of possible superiors.
+      this.intervieweeService.findIntervieweeByEngagement(this.engagementId).subscribe(x => {
+
+        console.log(JSON.stringify(x)) ;
+        this.superiors = x ;
+      }
+      );
+
+      // Reports To Options
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          const name = typeof value === 'string' ? value : value?.fullName;
+          return name ? this._filter(name as string) : this.superiors.slice();
+        }),
+      );
+
 
   }
 
@@ -53,11 +75,10 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
     newInterviewee.lastName = value.lastName ;
     newInterviewee.title = value.title ;
     newInterviewee.role = value.role ;
+    newInterviewee.engagementId = this.engagementId ;
 
-
-    console.log("InterviewId:" + this.interviewId) ;
-
-    console.log("In onAddInterviewee: " + JSON.stringify(newInterviewee)) ;
+    const rt =  this.myControl.value  as Interviewee;
+    newInterviewee.reportsToId = rt.intervieweeId ;
 
     if(this.editMode) {
 
@@ -65,15 +86,16 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
 
     }else {
 
-      console.log("Adding Interviewee") ;
+      console.log("Adding Interviewee to engagement") ;
       // Add the Interviewee
       this.intervieweeService.addInterviewee(newInterviewee).subscribe(x => {
 
-
-        // Add the Interviewee to the Interview
-        this.iiService.addIntervieweeToInterview(this.interviewId, x).subscribe(x =>
-          this.intervieweeService.intervieweesChanged.next(true)
-        );
+        if(this.interviewId) {
+          // Add the Interviewee to the Interview
+          this.iiService.addIntervieweeToInterview(this.interviewId, x).subscribe(x =>
+            this.intervieweeService.intervieweesChanged.next(true)
+          );
+        }
       }) ;
     }
 
@@ -99,6 +121,16 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
 
   onBack() {
     this.location.back() ;
+  }
+
+  displayFn(superior: Interviewee): string {
+    return superior && superior.fullName ? superior.fullName : '';
+  }
+
+  private _filter(name: string): Interviewee[] {
+    const filterValue = name.toLowerCase();
+
+    return this.superiors.filter(option => option.fullName.toLowerCase().includes(filterValue));
   }
 
 }

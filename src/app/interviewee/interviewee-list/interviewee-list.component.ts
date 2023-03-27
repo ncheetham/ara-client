@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { map, Subscription } from 'rxjs';
 import { InterviewIntervieweeService } from 'src/app/interview-interviewee.service';
-import { IntervieweeService } from 'src/app/interviewee.service';
+import { IntervieweeService } from 'src/app/interviewee/interviewee.service';
 import { InterviewInterviewee } from 'src/app/interviewinterviewee';
 import { Interviewee } from '../interviewee';
 

@@ -1,0 +1,15 @@
+<div class="container" *ngIf="interview">
+  <div class="row">
+    <app-interview-header [interview]="interview"></app-interview-header>
+    <div class="button-tool-bar">
+      <button mat-raised-button color="primary" (click)="onCancel()">Back</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="isAddingFinding">
+    <!-- -->
+    <app-finding-edit  [engagementId]="interview.engagement.engagementId" [interviewId]="interview.interviewId" (addFinding)="onAddFinding($event)"></app-finding-edit>
+  </div>
+  <div class="row">
+    <app-answer-list [interviewId]="interview.interviewId" (addFinding)="onAddFinding($event)"></app-answer-list>
+  </div>
+</div>

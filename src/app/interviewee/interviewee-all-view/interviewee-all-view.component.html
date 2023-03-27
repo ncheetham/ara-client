@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <app-engagement-header [engagement]="engagement"></app-engagement-header>
+  </div>
+  <div class="row col-md-10">
+    <h2>Interviewees</h2>
+  </div>
+
+    <div class="button-tool-bar">
+      <button  mat-raised-button color="primary" type="button" (click)="onCancel()">Back</button>
+      <button  mat-raised-button color="primary" type="button" (click)="onAddInterviewee()">Add</button>
+      <button mat-raised-button color="primary" type="button" (click)="onDownloadTemplate()">Download Template</button>
+      <app-fileupload [destinationUrl]="'/api/interviewee/upload/2'"></app-fileupload>
+
+    </div>
+  <div class="row col-md-10" *ngIf="engagementId">
+    <app-interviewee-all-list [engagementId]="engagementId"></app-interviewee-all-list>
+  </div>
+</div>

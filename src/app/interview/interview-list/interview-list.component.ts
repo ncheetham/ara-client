@@ -41,17 +41,23 @@ export class InterviewListComponent implements OnInit, OnDestroy {
     // Listen to changed Interviews.
     this.interviewChangedSubscription = this.interviewService.interviewChanged.subscribe(x=> {
 
-      this.interviewService.findInterviewsByEngagement(this.engagementId).subscribe(interviews => this.interviews = interviews) ;
-
+      if(this.engagementId) {
+        this.interviewService.findInterviewsByEngagement(this.engagementId).subscribe(interviews => this.interviews = interviews) ;
+      }
     });
 
   }
 
 
-  onSelect(row: Interview) {
-    //console.log("interview selected with ID:" + row.interviewId) ;
-    // Navigate to the Edit Interview Screen
-    this.router.navigate(['viewinterview', row.interviewId]) ;
-  }
+  onSelect(interview: Interview) {
+    // Navigate to the Edit Interview Screen -- unless the interview has been conducted - in which case go to review.
+
+    if(interview.interviewStatus.interviewStatusId > 2) {
+      this.router.navigate(['interviewreview', interview.interviewId]) ;
+    }else {
+      this.router.navigate(['viewinterview', interview.interviewId]) ;
+    }
+
+    }
 
 }

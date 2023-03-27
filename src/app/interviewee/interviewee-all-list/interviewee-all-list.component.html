@@ -1,0 +1,42 @@
+<table mat-table [dataSource]="interviewees" class="table mat-elevation-z8">
+
+  <!-- Name -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">{{element.fullName}}</td>
+  </ng-container>
+  <!-- Title -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> title </th>
+    <td mat-cell *matCellDef="let element">{{element.title}}</td>
+  </ng-container>
+   <!-- Reports To -->
+   <ng-container matColumnDef="reportsto">
+    <th mat-header-cell *matHeaderCellDef> Reports To </th>
+    <td mat-cell *matCellDef="let element">{{element.reportsToName}}</td>
+  </ng-container>
+
+    <!--Planned -->
+    <ng-container matColumnDef="interviewsplanned">
+      <th mat-header-cell *matHeaderCellDef> Planned </th>
+      <td mat-cell *matCellDef="let element">{{element.interviewsPlanned}}</td>
+    </ng-container>
+
+      <!--Planned -->
+      <ng-container matColumnDef="interviewsscheduled">
+        <th mat-header-cell *matHeaderCellDef> Scheduled </th>
+        <td mat-cell *matCellDef="let element">{{element.interviewsScheduled}}</td>
+      </ng-container>
+
+        <!--Planned -->
+    <ng-container matColumnDef="interviewscompleted">
+      <th mat-header-cell *matHeaderCellDef> Completed </th>
+      <td mat-cell *matCellDef="let element">{{element.interviewsCompleted}}</td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row class="element-row"
+  (click)="onSelect(row)"
+  [class.row-is-clicked]="selectedInterviewee == row"
+  *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -42,17 +42,6 @@ export class ClientEditComponent implements OnInit, OnDestroy{
     }
 
 
-     //  this.route.params.pipe(map(p => p['id'])).subscribe(x=> {
-
-      //   this.clientService.findClient(x).subscribe(client => {
-
-      //     console.log('setting client') ;
-      //     this.client = client ;
-
-      //   }) ;
-
-
-
     this.subscription = this.clientService.startedEditing.subscribe((index: number) =>
     {
 

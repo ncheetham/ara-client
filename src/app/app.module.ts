@@ -13,7 +13,6 @@ import { EngagementListComponent } from './engagement/engagement-list/engagement
 import { ClientEditComponent } from './client/client-edit/client-edit.component';
 import { EngagementEditComponent } from './engagement/engagement-edit/engagement-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import { MatCard, MatCardModule } from '@angular/material/card' ;
@@ -25,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 import { InterviewComponent } from './interview/interview.component';
 import { InterviewListComponent } from './interview/interview-list/interview-list.component';
 import { InterviewEditComponent } from './interview/interview-edit/interview-edit.component';
@@ -113,6 +113,29 @@ import { SurveyViewComponent } from './survey/survey-view/survey-view.component'
 import { SurveyListComponent } from './survey/survey-list/survey-list.component';
 import { SurveyCopyListComponent } from './survey/survey-copy-list/survey-copy-list.component';
 import { InterviewCopyListComponent } from './interview/interview-copy-list/interview-copy-list.component';
+import { InterviewReviewComponent } from './interview/interview-review/interview-review.component';
+import { InterviewHeaderComponent } from './interview/interview-header/interview-header.component';
+import { AnswerListComponent } from './answer/answer-list/answer-list.component';
+import { FindingEditComponent } from './finding/finding-edit/finding-edit.component';
+import { FindingListComponent } from './finding/finding-list/finding-list.component';
+import { FindingDashboardComponent } from './finding/finding-dashboard/finding-dashboard.component';
+import { IntervieweeDashboardComponent } from './interviewee/interviewee-dashboard/interviewee-dashboard.component';
+import { OrgChartModule } from 'angular13-organization-chart';
+import { IntervieweeViewComponent } from './interviewee/interviewee-view/interviewee-view.component';
+import { IntervieweeListAllComponent } from './interviewee/interviewee-all-list/interviewee-all-list.component';
+import { ProbabilityEditComponent } from './probability/probability-edit/probability-edit.component';
+import { ProbabilityListComponent } from './probability/probability-list/probability-list.component';
+import { ImpactEditComponent } from './impact/impact-edit/impact-edit.component';
+import { ImpactViewComponent } from './impact/impact-view/impact-view.component';
+import { ImpactListComponent } from './impact/impact-list/impact-list.component';
+import { ProbabilityViewComponent } from './probability/probability-view/probability-view.component';
+import { FindingViewComponent } from './finding/finding-view/finding-view.component';
+import { IntervieweeAllViewComponent } from './interviewee/interviewee-all-view/interviewee-all-view.component';
+import { EngagementHeaderComponent } from './engagement/engagement-header/engagement-header.component';
+import { FileuploadComponent } from './fileupload/fileupload/fileupload.component';
+import { MatListModule } from '@angular/material/list';
+import { EngagementIntervieweeComponent } from './interviewee/engagement-interviewee/engagement-interviewee.component';
+import { SurveyQuestionCategoryComponent } from './survey/survey-question-category/survey-question-category.component';
 
 @NgModule({
   declarations: [
@@ -208,6 +231,27 @@ import { InterviewCopyListComponent } from './interview/interview-copy-list/inte
     SurveyListComponent,
     SurveyCopyListComponent,
     InterviewCopyListComponent,
+    InterviewReviewComponent,
+    InterviewHeaderComponent,
+    AnswerListComponent,
+    FindingEditComponent,
+    FindingListComponent,
+    FindingDashboardComponent,
+    IntervieweeDashboardComponent,
+    IntervieweeViewComponent,
+    IntervieweeListAllComponent,
+    ProbabilityEditComponent,
+    ProbabilityListComponent,
+    ImpactEditComponent,
+    ImpactViewComponent,
+    ImpactListComponent,
+    ProbabilityViewComponent,
+    FindingViewComponent,
+    IntervieweeAllViewComponent,
+    EngagementHeaderComponent,
+    FileuploadComponent,
+    EngagementIntervieweeComponent,
+    SurveyQuestionCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -230,6 +274,9 @@ import { InterviewCopyListComponent } from './interview/interview-copy-list/inte
     HttpClientModule,
     NgDynamicBreadcrumbModule,
     MatProgressBarModule,
+    MatIconModule,
+    OrgChartModule,
+    MatListModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
