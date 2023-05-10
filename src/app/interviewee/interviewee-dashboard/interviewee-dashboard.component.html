@@ -6,14 +6,15 @@
     <div class="button-tool-bar">
         <button mat-raised-button color="primary" (click)="onViewInterviewees()">View</button>
         <button mat-raised-button color="primary" (click)="onAddInterviewee()">Add</button>
+        <button mat-raised-button color="primary" printSectionId="orgChart" [printStyle]="{ h2 : {'border' : 'solid 1px'}}" printTitle="Org Chart" [useExistingCss]="true" [printDelay]="10" [previewOnly]="false" ngxPrint>Print</button>
       </div>
     </div>
-  <div class="row col-md-10">
+  <div class="row col-md-12" id="orgChart">
    <angular-org-chart [nodeTemplate]="nodeTemplate" [data]="data"></angular-org-chart>
 
       <!-- Node Template -->
   <ng-template #nodeTemplate let-node>
-    <div class="chart-node">
+    <div class="chart-node" (click)="onSelectInterviewee(node?.id)">
       <!-- <img [src]="node?.image"> -->
       <div class="name">{{node?.name}}</div>
       <div class="description">{{node?.title}} </div>

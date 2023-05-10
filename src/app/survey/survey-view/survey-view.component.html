@@ -1,1 +1,12 @@
-<p>survey-view works!</p>
+<div class="container" *ngIf="engagement">
+  <app-engagement-header [engagement]="engagement"></app-engagement-header>
+  <div class="row">
+    <div class="button-tool-bar">
+      <button mat-raised-button color="primary" type="button" (click)="onAddSurvey()">Add</button>
+      <button mat-raised-button color="primary" type="button" (click)="onBack()">Back</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="engagement">
+    <app-survey-list [engagementId]="engagement.engagementId"></app-survey-list>
+  </div>
+</div>

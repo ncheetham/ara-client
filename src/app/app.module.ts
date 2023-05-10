@@ -136,6 +136,19 @@ import { FileuploadComponent } from './fileupload/fileupload/fileupload.componen
 import { MatListModule } from '@angular/material/list';
 import { EngagementIntervieweeComponent } from './interviewee/engagement-interviewee/engagement-interviewee.component';
 import { SurveyQuestionCategoryComponent } from './survey/survey-question-category/survey-question-category.component';
+import { SurveyEditComponent } from './survey/survey-edit/survey-edit.component';
+import { SurveyDashboardComponent } from './survey/survey-dashboard/survey-dashboard.component';
+import { SurveyQuestionListComponent } from './survey/survey-question-list/survey-question-list.component';
+import { SurveyQuestionEditComponent } from './survey/survey-question-edit/survey-question-edit.component';
+import { SurveyHeaderComponent } from './survey/survey-header/survey-header.component';
+import { DropdownAnswerComponent } from './survey/dropdown-answer/dropdown-answer.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { IntervieweeStatusComponent } from './interviewee/interviewee-status/interviewee-status.component';
+import { SurveyConductComponent } from './survey/survey-conduct/survey-conduct.component';
+import { SurveyQuestionAnswerComponent } from './survey/survey-question-answer/survey-question-answer.component';
+import { SurveyIntervieweeComponent } from './survey/survey-interviewee/survey-interviewee.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -251,7 +264,17 @@ import { SurveyQuestionCategoryComponent } from './survey/survey-question-catego
     EngagementHeaderComponent,
     FileuploadComponent,
     EngagementIntervieweeComponent,
-    SurveyQuestionCategoryComponent
+    SurveyQuestionCategoryComponent,
+    SurveyEditComponent,
+    SurveyDashboardComponent,
+    SurveyQuestionListComponent,
+    SurveyQuestionEditComponent,
+    SurveyHeaderComponent,
+    DropdownAnswerComponent,
+    IntervieweeStatusComponent,
+    SurveyConductComponent,
+    SurveyQuestionAnswerComponent,
+    SurveyIntervieweeComponent
   ],
   imports: [
     BrowserModule,
@@ -276,7 +299,10 @@ import { SurveyQuestionCategoryComponent } from './survey/survey-question-catego
     MatProgressBarModule,
     MatIconModule,
     OrgChartModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatRadioModule,
+    NgxPrintModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]

@@ -32,7 +32,7 @@ export class InterviewEditComponent implements OnInit, OnDestroy {
 
   @ViewChild('f', {static: false}) iForm: NgForm ;
 
-  myControl = new FormControl<string | Team>('');
+  teamControl = new FormControl<string | Team>('');
   selectedInterview: Interview = new Interview();
   selectedInterviewSubscription: Subscription ;
   engagementId: number ;
@@ -124,7 +124,7 @@ export class InterviewEditComponent implements OnInit, OnDestroy {
     this.userService.findAllUsers().subscribe(x => this.users = x) ;
 
 
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredOptions = this.teamControl.valueChanges.pipe(
       startWith(''),
       map(value => {
         const name = typeof value === 'string' ? value : value?.name;
@@ -165,7 +165,7 @@ export class InterviewEditComponent implements OnInit, OnDestroy {
       newInterview.interviewStatus.interviewStatusId = this.selectedInterview.interviewStatus.interviewStatusId ;
 
       // We have to process the Team first to make sure it is set.
-      const formValue = this.myControl.value ;
+      const formValue = this.teamControl.value ;
       const aTeam: Team = new Team() ;
 
       // See if a team has been provided.
@@ -233,7 +233,7 @@ export class InterviewEditComponent implements OnInit, OnDestroy {
 
   onCancel() {
     this.location.back() ;
-    this.interviewService.interviewChanged.next(true) ; 
+    this.interviewService.interviewChanged.next(true) ;
   }
 
 }

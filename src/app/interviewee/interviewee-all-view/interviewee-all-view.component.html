@@ -10,7 +10,7 @@
       <button  mat-raised-button color="primary" type="button" (click)="onCancel()">Back</button>
       <button  mat-raised-button color="primary" type="button" (click)="onAddInterviewee()">Add</button>
       <button mat-raised-button color="primary" type="button" (click)="onDownloadTemplate()">Download Template</button>
-      <app-fileupload [destinationUrl]="'/api/interviewee/upload/2'"></app-fileupload>
+      <app-fileupload [destinationUrl]="uploadUrl"></app-fileupload>
 
     </div>
   <div class="row col-md-10" *ngIf="engagementId">

@@ -45,7 +45,7 @@
     <div class="row">
     <mat-form-field class="col-sm-5">
       <mat-label>Team</mat-label>
-      <input type="text" matInput id="interview-team" [formControl]="myControl" name="team" [matAutocomplete]="auto" [value]="selectedInterview.team.name">
+      <input type="text" matInput id="interview-team" [formControl]="teamControl" name="team" [matAutocomplete]="auto" [value]="selectedInterview.team.name">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let team of filteredOptions | async" [value]="team">
           {{team.name}}

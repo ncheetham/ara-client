@@ -1,16 +1,20 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, Subject, tap } from 'rxjs';
+import { ChartData } from '../engagementInterviewsummaryvo';
 import { Survey } from './survey';
+import { SurveyStatusVO } from './survey-dashboard/surveystatusvo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurveyService {
 
+
   baseUrl: string = "/api/survey/";
 
-  engagementSelected = new Subject<number>() ;
+  surveySelected = new Subject<number>() ;
+  surveyChanged = new Subject<true>() ;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -67,10 +71,24 @@ export class SurveyService {
 
   }
 
+  // Find Survey Statistics by Engagement
+  findSurveyStatistics(engagementId: number): Observable<SurveyStatusVO[]> {
+    const url  = `${this.baseUrl}statistics/${engagementId}`;
+
+    return this.httpClient.get<SurveyStatusVO[]>(url).pipe(
+      tap((s) => {
+        catchError(this.handleError('findSurveyStatistics', s));
+      })
+    );
+
+  }
+
   // add a survey
   addSurvey(survey: Survey): Observable<Survey> {
+    console.log("posting to:" + this.baseUrl) ;
     return this.httpClient.post<Survey>(this.baseUrl, survey, this.httpOptions).pipe(
       tap((s: Survey) => {
+        console.log(JSON.stringify(s)) ;
         catchError(this.handleError('addEngagement', s));
       })
     )

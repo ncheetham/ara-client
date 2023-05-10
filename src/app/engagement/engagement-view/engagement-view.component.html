@@ -3,6 +3,10 @@
   <app-engagement-header [engagement]="engagement"></app-engagement-header>
 </div>
 <div class="row">
+  <!-- Survey Count -->
+  <app-survey-dashboard [engagementId]="engagement.engagementId"></app-survey-dashboard>
+  </div>
+<div class="row">
 <!-- Interview Count -->
 <app-interview-dashboard [engagementId]="engagement.engagementId"></app-interview-dashboard>
 </div>

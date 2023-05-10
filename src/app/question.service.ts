@@ -17,6 +17,7 @@ export class QuestionService {
   }
 
   questionChangedSubscription = new Subject<boolean>() ;
+  questionCreatedSubscription = new Subject<Question>() ;
   startedEditing = new Subject<number>() ;
 
   constructor(private httpClient: HttpClient) { }
@@ -87,9 +88,12 @@ export class QuestionService {
   // Add a Question.
   public addQuestion(question: Question): Observable<Question> {
 
+    console.log("in Add Question method of Question Service") ;
+
     return this.httpClient.post<Question>(this.baseUrl, question, this.httpOptions).pipe(
-      tap(_ => {
+      tap((q: Question) => {
         this.questionChangedSubscription.next(true) ;
+        this.questionCreatedSubscription.next(q);
         catchError(this.handleError('addQuestion', {})) ;
       })
     ) ;
@@ -106,6 +110,7 @@ export class QuestionService {
       return this.httpClient.put<Question>(url, question, this.httpOptions).pipe(
         tap(_ => {
           this.questionChangedSubscription.next(true) ;
+          this.questionCreatedSubscription.next(question);
           catchError(this.handleError('updateQuestion', {})) ;
         })
       ) ;

@@ -12,6 +12,7 @@ import { EngagementThemeService } from 'src/app/engagement-theme.service';
 import { InterviewQuestionService } from 'src/app/interview-question.service';
 import { InterviewQuestion } from 'src/app/interviewquestion';
 import { Location } from '@angular/common';
+import { AnswerType } from 'src/app/answerType/answertype';
 
 
 
@@ -42,7 +43,9 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
     private etService: EngagementThemeService, private questionService: QuestionService) { }
 
   ngOnDestroy(): void {
+
     this.selectedQuestionSubscription.unsubscribe() ;
+    
   }
 
   ngOnInit(): void
@@ -81,7 +84,8 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
 
     const value = form.value ;
 
-    var newQuestion: Question = {questionId: value.questionId, description: value.description}
+    var newQuestion: Question = {questionId: value.questionId, description: value.description, answerType: new AnswerType()}
+    newQuestion.answerType.answerTypeId = 1 ; // Default the answer Type to 1 ;
 
     console.log('About to update question: ' + JSON.stringify(newQuestion)) ;
 
@@ -114,8 +118,7 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
 
   onClear() {
 
-    this.qForm.reset() ;
-    //this.question = new Question() ;
+    this.qForm.resetForm() ;
     this.editMode = false;
 
   }

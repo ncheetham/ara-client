@@ -8,6 +8,7 @@ import { EngagementTheme } from 'src/app/engagement/engagement-theme/engagementt
 import { Engagement } from 'src/app/engagement/engagement';
 import { QuestionService } from 'src/app/question.service';
 import { Question } from 'src/app/question/question';
+import { AnswerType } from 'src/app/answerType/answertype';
 
 @Component({
   selector: 'app-engagement-question-edit',
@@ -21,7 +22,7 @@ export class EngagementQuestionEditComponent implements OnInit {
   @Input() engagementThemeId: number ;
   @ViewChild('f', {static: false}) qForm: NgForm ;
 
-  question: Question = {questionId: 0, description: ''};;
+  question: Question = {questionId: 0, description: '', answerType: new AnswerType()};;
   editMode = false ;
   selectedQuestionSubscription: Subscription ;
   questionChangedSubscription: Subscription ;
@@ -78,7 +79,7 @@ export class EngagementQuestionEditComponent implements OnInit {
 
   onAddQuestion(form: NgForm) {
 
-    var newQuestion: Question = {questionId: this.question.questionId, description: this.question.description }
+    var newQuestion: Question = {questionId: this.question.questionId, description: this.question.description, answerType: new AnswerType() }
 
     console.log('About to update question: ' + JSON.stringify(newQuestion)) ;
 

@@ -124,4 +124,14 @@ export class IntervieweeDashboardComponent implements OnInit {
 
   }
 
+  onSelectInterviewee(id: number) {
+    if(id && id > 0) {
+      this.router.navigate(['viewinterviewee', id]) ;
+    }
+  }
+
+  onPrint() {
+    
+  }
+
 }

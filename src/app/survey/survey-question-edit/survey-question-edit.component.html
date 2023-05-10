@@ -1,0 +1,54 @@
+<div class="container">
+  <app-survey-header [survey]="survey"></app-survey-header>
+  <div class="row">
+    <form #f="ngForm" (submit)="onAddQuestion(f)">
+
+      <!-- Question Id -->
+      <div class="row col-sm-3" hidden>
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input readonly="true" matInput [(ngModel)]="surveyQuestion.surveyQuestionId" name="questionId" >
+      </mat-form-field>
+    </div>
+
+      <!-- Question-->
+      <div class="row col-sm-10">
+      <mat-form-field>
+        <mat-label>Question</mat-label>
+        <textarea matInput [(ngModel)]="surveyQuestion.question.description" name="description" rows="5" required></textarea>
+      </mat-form-field>
+    </div>
+
+     <!-- Category-->
+     <mat-form-field class="col-sm-5">
+      <mat-label>Category</mat-label>
+      <input type="text" matInput [formControl]="categoryControl" [matAutocomplete]="auto" [value]="surveyQuestion.category.name" required>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <!-- Answer Type -->
+    <div class="row">
+    <mat-form-field class="col-sm-5">
+      <mat-label>Answer Type:</mat-label>
+      <mat-select [(ngModel)]="surveyQuestion.question.answerType.answerTypeId" name="answertype" [value]="surveyQuestion.question.answerType.answerTypeId">
+        <mat-option *ngFor="let type of answerTypes" [value]="type.answerTypeId">
+          {{type.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    <div class="row" *ngIf="surveyQuestion.question.answerType && surveyQuestion.question.answerType.answerTypeId > 2">
+    <app-dropdown-answer [answerTypeId]="surveyQuestion.question.answerType.answerTypeId" [questionId]="surveyQuestion.question.questionId"></app-dropdown-answer>
+    </div>
+
+    <div class="button-tool-bar">
+        <button mat-raised-button color="primary" [disabled]="!f.valid" (click)="onAddQuestion(f)">{{editMode ? 'Update' : 'Add'}}</button>
+        <button mat-raised-button color="primary" type="button" *ngIf="editMode" (click)="onDelete()">Delete</button>
+        <button mat-raised-button color="primary" type="button" (click)="onBack()">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

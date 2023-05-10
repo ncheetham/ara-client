@@ -1,0 +1,64 @@
+<!-- Drop-down configuration for survey question. -->
+<div class="row col-md-10">
+  <form #f="ngForm" (submit)="onAddOption(f)" >
+    <mat-grid-list cols="2" class="col-md-12" rowHeight="75px">
+      <mat-grid-tile>
+        <div class="row col-md-10">
+          <mat-form-field class="col-sm-10" hidden >
+            <mat-label>Id:</mat-label>
+            <input matInput type="number"
+              id="value-id" name="id" placeholder="id"
+              [(ngModel)]="selectedValue.answerValueId" >
+          </mat-form-field>
+           <!-- Value -->
+           <mat-form-field class="col-sm-8">
+            <mat-label>Value:</mat-label>
+            <input matInput type="text"
+            id="value-value" name="value" placeholder="value" required
+            [(ngModel)]="selectedValue.value" >
+          </mat-form-field>
+          <!-- Score -->
+
+          <mat-form-field class="col-sm-2"  *ngIf="answerTypeId == 5">
+            <mat-label>Score:</mat-label>
+            <input matInput type="number"
+            id="value-score" name="score" placeholder="score"
+            [(ngModel)]="selectedValue.score" >
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+    <mat-grid-tile class="col-md-2">
+      <div class="tool-bar-button">
+        <button mat-raised-button color="primary" [disabled]='!f.valid'>{{editMode ? 'Edit' : 'Add'}}</button>
+      </div>
+    </mat-grid-tile>
+    <ul class="list-group" *ngIf="answers.length > 0">
+      <div *ngFor="let value of answers; index as indexOfElement" >
+      <mat-grid-tile>
+        <div class="col-sm-10">
+      <a
+        class="list-group-item"
+        style:cursor="pointer"
+        (click)="onSelect(indexOfElement)"
+        >{{value.value}}
+      </a>
+      <!-- Only show if this is a Score List. -->
+      <a *ngIf="answerTypeId == 5"
+        class="list-group-item"
+        style:cursor="pointer"
+        (click)="onSelect(indexOfElement)"
+        >{{value.score}}
+      </a>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <div class="tool-bar-button">
+      <button mat-mini-fab type="button" color="warn" (click)="onRemove(indexOfElement)" *ngIf="answers.length > 0">-
+      </button>
+    </div>
+    </mat-grid-tile>
+  </div>
+  </ul>
+  </mat-grid-list>
+</form>
+</div>

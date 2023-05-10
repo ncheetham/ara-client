@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row col-md-10" *ngIf="survey">
+    <app-survey-header [survey]="survey"></app-survey-header>
+    <div class="row">
+    <!-- <div class="button-tool-bar">
+      <button mat-raised-button color="primary" (click)="onBack()">Back</button>
+    </div> -->
+  </div>
+  </div>
+  <div class="col-xs-12" *ngIf="questions">
+    <form (ngSubmit)="onAddAnswer(f)" #f="ngForm">
+      <div class="row" *ngIf="interviewee">
+        <h2>{{interviewee.fullName}}</h2>
+      </div>
+      <div class="row" *ngIf="question.category">
+        <h2>Category: {{question.category.name}}</h2>
+      </div>
+      <div class="col-sm-10">
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+      </div>
+      <div class="row">
+      <h3>{{question.questionNumber + ') ' +  question.question.description}}</h3>
+      </div>
+
+      <mat-form-field hidden>
+        <label mat-label>ID</label>
+        <input matInput name="surveyQuestionId" [(ngModel)]="question.surveyQuestionId">
+      </mat-form-field>
+      <div class="row col-sm-10" *ngIf="question.question.answerType.answerTypeId == 1">
+      <mat-form-field>
+        <label mat-label>Answer</label>
+        <textarea matInput type="text" rows="5" name="answer" [(ngModel)]="question.answer" required></textarea>
+      </mat-form-field>
+      </div>
+
+      <!-- Yes/No -->
+      <div class="row col-sm-10" *ngIf="question.question.answerType.answerTypeId == 2">
+        <mat-form-field>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="question.answer"]>
+            <mat-radio-button value="Yes">Yes</mat-radio-button>
+            <mat-radio-button value="No">No</mat-radio-button>
+          </mat-radio-group>
+        </mat-form-field>
+      </div>
+      <!-- Single Selection List -->
+      <div class="row col-sm-10" *ngIf="question.question.answerType.answerTypeId == 3">
+        <mat-form-field class="col-sm-5 form-group">
+        <mat-label>Answer</mat-label>
+        <mat-select id="surveyselectanswer" class="form-control" name="selectanswer" [(ngModel)]="question.answer" [(value)]="question.answer" required>
+          <mat-option *ngFor="let a of answerValues" [value]="a.value">
+            {{a.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <!-- Multiple Selection list  -->
+      <div class="row col-sm-10" *ngIf="question.question.answerType.answerTypeId == 4">
+        <mat-form-field class="col-sm-5 form-group">
+          <mat-label>Answer</mat-label>
+          <mat-select id="surveyselectanswer" class="form-control" name="selectanswer" [(ngModel)]="question.answer" [(value)]="question.answer" required>
+            <mat-option *ngFor="let a of answerValues" [value]="a.value">
+              {{a.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- List Score  -->
+      <div class="row col-sm-10" *ngIf="question.question.answerType.answerTypeId == 5">
+        <mat-form-field class="col-sm-5 form-group">
+          <mat-label>Answer</mat-label>
+          <mat-select id="surveyselectanswer" class="form-control" name="selectanswer" [(ngModel)]="question.answer" [(value)]="question.answer" required>
+            <mat-option *ngFor="let a of answerValues" [value]="a.value">
+              {{a.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row" hidden>
+        <mat-form-field class="col-sm-5">
+          <mat-label>Answered By</mat-label>
+          <input matInput name="answerer" [(ngModel)]="answerer">
+        </mat-form-field>
+      </div>
+
+
+      <!-- <div class="row col-sm-10">
+        <mat-form-field>
+          <label mat-label>Notes</label>
+          <textarea matInput type="text" rows="5" name="notes" [(ngModel)]="question.notes"></textarea>
+        </mat-form-field>
+        </div> -->
+  <div class="button-tool-bar">
+    <button mat-raised-button color="primary" type="button" [disabled]="questionIndex == 0" (click)="onPreviousQuestion()">Previous</button>
+    <button mat-raised-button color="primary" type="button" [disabled]="(questionIndex == questionCount-1) || !f.valid" (click)="onNextQuestion()">Next</button>
+    <button mat-raised-button color="primary" type="button" (click)="onBack()">Cancel</button>
+    <button mat-raised-button color="primary" type="button" *ngIf="(questionIndex == questionCount-1) && f.valid" (click)="onConclude()">Conclude</button>
+  </div>
+  </form>
+  </div>
+
+</div>

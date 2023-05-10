@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, Subject, tap } from 'rxjs';
 import { SurveyQuestionCategory } from './survey-question-category/surveyquestioncategory';
 
 @Injectable({
@@ -14,6 +14,8 @@ export class SurveyQuestionCategoryService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
   }
+
+  surveyQuestionCategoryChanged = new Subject<boolean>()
 
   constructor(private httpClient: HttpClient) { }
 
@@ -45,6 +47,7 @@ export class SurveyQuestionCategoryService {
 
     return this.httpClient.post<SurveyQuestionCategory>(this.baseUrl, sqc, this.httpOptions).pipe(
       tap(_ => {
+        this.surveyQuestionCategoryChanged.next(true) ;
         catchError(this.handleError("createSurveyQuestionCategory", {}));
       })
     );
@@ -58,6 +61,7 @@ export class SurveyQuestionCategoryService {
 
     return this.httpClient.put<SurveyQuestionCategory>(url, sqc, this.httpOptions).pipe(
       tap(_=> {
+        this.surveyQuestionCategoryChanged.next(true) ;
         catchError(this.handleError("updateSurveyQuestionCategory", {}));
       })
     ) ;
@@ -71,11 +75,24 @@ export class SurveyQuestionCategoryService {
 
     return this.httpClient.delete<SurveyQuestionCategory>(url).pipe(
       tap(_=> {
+        this.surveyQuestionCategoryChanged.next(true) ; 
         catchError(this.handleError("deleteSurveyQuestionCategory", {}));
       })
     ) ;
-
   }
+
+
+    public findBySurveyId(surveyId: number): Observable<SurveyQuestionCategory[]> {
+
+      const url = `${this.baseUrl}survey/${surveyId}` ;
+
+      return this.httpClient.get<SurveyQuestionCategory[]>(url).pipe(
+        tap(_ => {
+          catchError(this.handleError('findBySurveyId', []))
+        })
+      );
+
+    }
 
 
 
@@ -86,5 +103,7 @@ export class SurveyQuestionCategoryService {
       return of(result as T) ;
     }
   }
+
+
 
 }

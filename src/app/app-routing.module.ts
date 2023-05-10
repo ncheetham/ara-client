@@ -43,6 +43,14 @@ import { FindingViewComponent } from './finding/finding-view/finding-view.compon
 import { IntervieweeAllViewComponent } from './interviewee/interviewee-all-view/interviewee-all-view.component';
 import { IntervieweeEditComponent } from './interviewee/interviewee-edit/interviewee-edit.component';
 import { EngagementIntervieweeComponent } from './interviewee/engagement-interviewee/engagement-interviewee.component';
+import { SurveyViewComponent } from './survey/survey-view/survey-view.component';
+import { SurveyEditComponent } from './survey/survey-edit/survey-edit.component';
+import { SurveyQuestionEditComponent } from './survey/survey-question-edit/survey-question-edit.component';
+import { DropdownAnswerComponent } from './survey/dropdown-answer/dropdown-answer.component';
+import { IntervieweeStatusComponent } from './interviewee/interviewee-status/interviewee-status.component';
+import { SurveyConductComponent } from './survey/survey-conduct/survey-conduct.component';
+import { SurveyIntervieweeComponent } from './survey/survey-interviewee/survey-interviewee.component';
+import { SurveyQuestionAnswerComponent } from './survey/survey-question-answer/survey-question-answer.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
@@ -227,6 +235,16 @@ const routes: Routes = [
 {path: 'viewfindings/:id', component: FindingViewComponent, canActivate: [AuthGuardService]},
 {path: 'viewintervieweesall/:id', component: IntervieweeAllViewComponent, canActivate: [AuthGuardService]},
 {path: 'addinterviewee/:id', component: EngagementIntervieweeComponent, canActivate: [AuthGuardService]},
+{path: 'addengagementsurvey/:id', component: SurveyEditComponent, canActivate: [AuthGuardService]},
+{path: 'viewengagementsurveys/:id', component: SurveyViewComponent, canActivate: [AuthGuardService]},
+{path: 'editengagementsurvey/:id/:surveyid', component: SurveyEditComponent, canActivate: [AuthGuardService]},
+{path: 'addsurveyquestion/:surveyid', component: SurveyQuestionEditComponent, canActivate: [AuthGuardService]},
+{path: 'editsurveyquestion/:surveyid/:surveyquestionid', component: SurveyQuestionEditComponent, canActivate: [AuthGuardService]},
+{path: 'viewinterviewee/:intervieweeid', component: IntervieweeStatusComponent, canActivate: [AuthGuardService]},
+{path: 'conductsurvey/:surveyid', component: SurveyConductComponent, canActivate: [AuthGuardService]},
+{path: 'conductintervieweesurvey/:surveyintervieweeid', component: SurveyQuestionAnswerComponent, canActivate: [AuthGuardService]},
+{path: 'dropdown', component: DropdownAnswerComponent},
+
 ];
 
 @NgModule({

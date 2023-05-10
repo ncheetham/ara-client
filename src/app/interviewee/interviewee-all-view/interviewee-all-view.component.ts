@@ -17,7 +17,7 @@ export class IntervieweeAllViewComponent implements OnInit {
   @Input() engagementId: number ;
   engagement: Engagement  ;
   //iStatusVO: IntervieweeStatusVO[] = []
-
+  uploadUrl: string = "/api/interviewee/upload/";
 
   constructor(private iService: IntervieweeService, private route: ActivatedRoute, private location: Location,
     private engagementService: EngagementService, private router: Router) { }
@@ -26,6 +26,8 @@ export class IntervieweeAllViewComponent implements OnInit {
 
     // get the EngagementId.
     this.engagementId = Number(this.route.snapshot.paramMap.get("id")) ;
+
+    this.uploadUrl = this.uploadUrl+this.engagementId ;
 
     this.engagementService.findEngagement(this.engagementId).subscribe(
       x=> this.engagement = x

@@ -1,0 +1,29 @@
+<div class="container">
+  <app-survey-header [survey]="survey"></app-survey-header>
+  <div class="row col-md-10">
+    <div class="row">
+      <h2>Conduct Survey</h2>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onConduct(f)">
+      <!-- List of Interviewees -->
+      <div class="row">
+        <mat-form-field class="col-sm-5 form-group">
+          <mat-label>Interviewee:</mat-label>
+          <mat-select id="interview-intervieweeid" class="form-control" name="intervieweeId" class="form-control"
+          [(ngModel)]="surveyInterviewee.intervieweeId" [(value)]="surveyInterviewee.intervieweeId" required>
+            <mat-option *ngFor="let interviewee of interviewees" [value]="interviewee.intervieweeId">
+              {{interviewee.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="tool-bar-button">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">Conduct</button>
+          <button mat-raised-button color="primary" type="button" [disabled]="!f.valid" (click)="onDownloadSurvey(f)">Download</button>
+          <button mat-raised-button color="primary" (click)="onBack()" type="button">Back</button>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>

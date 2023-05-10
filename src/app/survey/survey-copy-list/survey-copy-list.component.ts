@@ -18,7 +18,7 @@ export class SurveyCopyListComponent implements OnInit {
 
   constructor(private surveyService: SurveyService) {
 
-    this.engagementSubscription = surveyService.engagementSelected.subscribe(x => {
+    this.engagementSubscription = surveyService.surveySelected.subscribe(x => {
 
       this.surveyService.findByEngagementId(x).subscribe(x=> {
         this.surveys = x ;

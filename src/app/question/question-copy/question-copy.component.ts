@@ -52,7 +52,7 @@ export class QuestionCopyComponent implements OnInit {
 
   onSurveys() {
     this.interviewService.selectedInterview.next(this.interview.interviewId) ;
-    this.surveyService.engagementSelected.next(this.interview.engagement.engagementId) ;
+    this.surveyService.surveySelected.next(this.interview.engagement.engagementId) ;
   }
 
 }

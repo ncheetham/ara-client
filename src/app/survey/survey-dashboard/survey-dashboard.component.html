@@ -1,0 +1,57 @@
+<div class="containter">
+  <div class="row">
+  <h2>Surveys</h2>
+  </div>
+  <div class="row">
+    <div class="button-tool-bar">
+      <button mat-raised-button color="primary" type="button" (click)="onViewSurveys()">View</button>
+      <button mat-raised-button color="primary" type="button" (click)="onAddSurvey()">Add</button>
+    </div>
+  </div>
+  <div class="row col-md-10">
+  <table mat-table [dataSource]="surveyStatus" class="table mat-elevation-z8">
+    <!-- Survey -->
+    <ng-container matColumnDef="survey">
+      <th mat-header-cell *matHeaderCellDef> Survey </th>
+      <td mat-cell *matCellDef="let element"> {{element.survey}} </td>
+    </ng-container>
+    <!-- Interviewees -->
+    <ng-container matColumnDef="interviewees">
+      <th mat-header-cell *matHeaderCellDef> Interviewees </th>
+      <td mat-cell *matCellDef="let element"> {{element.interviewees}} </td>
+    </ng-container>
+    <!-- Excluded -->
+    <ng-container matColumnDef="excluded">
+      <th mat-header-cell *matHeaderCellDef> N/A </th>
+      <td mat-cell *matCellDef="let element"> {{element.excluded}} </td>
+    </ng-container>
+    <!-- planned -->
+    <ng-container matColumnDef="planned">
+      <th mat-header-cell *matHeaderCellDef> Planned </th>
+      <td mat-cell *matCellDef="let element"> {{element.planned}} </td>
+    </ng-container>
+    <!-- Scheduled -->
+    <ng-container matColumnDef="scheduled">
+      <th mat-header-cell *matHeaderCellDef> Scheduled </th>
+      <td mat-cell *matCellDef="let element"> {{element.scheduled}} </td>
+    </ng-container>
+    <!-- Sent -->
+    <ng-container matColumnDef="sent">
+      <th mat-header-cell *matHeaderCellDef> Sent </th>
+      <td mat-cell *matCellDef="let element"> {{element.sent}} </td>
+    </ng-container>
+    <!-- Completed -->
+    <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef> Completed </th>
+      <td mat-cell *matCellDef="let element"> {{element.completed}} </td>
+    </ng-container>
+    <!-- <div id="surveyStatus" style="width: 400px;height:400px;"></div> -->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row class="element-row"
+      (click)="onSelect(row)"
+      [class.row-is-clicked]="selectedSurvey == row"
+      *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </div>
+</div>
