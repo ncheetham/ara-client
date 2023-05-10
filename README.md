@@ -1,5 +1,7 @@
 # AraClient
 
+This project provides the front-end code for the Application Risk Assessment (ARA) application. It is written in Angular (version below).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
 
 ## Development server
