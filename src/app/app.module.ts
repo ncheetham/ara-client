@@ -78,7 +78,6 @@ import { EngagementThemeEditComponent } from './engagement/engagement-theme/enga
 import { IntervieweeComponent } from './interviewee/interviewee.component';
 import { IntervieweeEditComponent } from './interviewee/interviewee-edit/interviewee-edit.component';
 import { IntervieweeListComponent } from './interviewee/interviewee-list/interviewee-list.component';
-import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
 import { InterviewStatusComponent } from './interview/interview-status/interview-status.component';
 import { InterviewStatusEditComponent } from './interview/interview-status/interview-status-edit/interview-status-edit.component';
 import { InterviewStatusListComponent } from './interview/interview-status/interview-status-list/interview-status-list.component';
@@ -295,7 +294,6 @@ import { NgxPrintModule } from 'ngx-print';
     MatToolbarModule,
     MatAutocompleteModule,
     HttpClientModule,
-    NgDynamicBreadcrumbModule,
     MatProgressBarModule,
     MatIconModule,
     OrgChartModule,
