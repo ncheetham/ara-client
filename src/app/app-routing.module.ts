@@ -55,86 +55,16 @@ import { SurveyQuestionAnswerComponent } from './survey/survey-question-answer/s
 const routes: Routes = [
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
   {path: 'clients', component: ClientComponent, canActivate: [AuthGuardService],
-    data: {
-      title: 'Clients',
-      breadcrumb: [
-        {
-          label: 'Clients',
-          url: ''
-        }
-      ]
-    },
 },
   {path: 'engagements', component: EngagementComponent, canActivate: [AuthGuardService],
-    data: {
-      title: 'Engagements',
-      breadcrumb: [
-        {
-          label: 'Clients',
-          url: '/clients/'
-        },
-        {
-          label: 'Engagements',
-          url: ''
-        }
-      ]
-    },
+
 },
   {path: 'clientengagements/:id', component: ClientEngagementComponent, canActivate: [AuthGuardService],
-    data: {
-      title: 'Engagements',
-      breadcrumb: [
-        {
-          label: 'Clients',
-          url: '/clients/'
-        },
-        {
-          label: 'Engagements',
-          url: ''
-        }
-      ]
-    },
   },
   {path: 'interviews/:id', component: InterviewComponent, canActivate: [AuthGuardService],
-  data: {
-    title: 'Engagements',
-    breadcrumb: [
-      {
-        label: 'Clients',
-        url: '/clients/'
-      },
-      {
-        label: 'Engagements',
-        url: '/clientengagements/:id'
-      },
-      {
-        label: 'Interviews',
-        url: ''
-      },
-    ]
-  }, },
+ },
   {path: 'interviewquestions/:id', component: QuestionComponent, canActivate: [AuthGuardService],
-  data: {
-    title: 'Engagements',
-    breadcrumb: [
-      {
-        label: 'Clients',
-        url: '/clients/'
-      },
-      {
-        label: 'Engagements',
-        url: '/clientengagements/:id'
-      },
-      {
-        label: 'Interviews',
-        url: 'interviews/:id'
-      },
-      {
-        label: 'Questions',
-        url: ''
-      }
-    ]
-  },  },
+ },
   {path: 'conductinterview/:id', component: ConductInterviewComponent, canActivate: [AuthGuardService]},
   {path: 'meetingtypes', component: MeetingTypeComponent, canActivate: [AuthGuardService]},
   {path: 'users', component: UserComponent, canActivate: [AuthGuardService]},
@@ -150,71 +80,11 @@ const routes: Routes = [
   {path: 'tooltech', component: ToolTechComponent, canActivate: [AuthGuardService]},
   {path: 'engagementquestions/:id', component: EngagementQuestionComponent, canActivate: [AuthGuardService]},
   {path: 'interviewevidence/:id', component: EvidenceComponent, canActivate: [AuthGuardService],
-    data: {
-      title: 'Engagements',
-      breadcrumb: [
-        {
-          label: 'Clients',
-          url: '/clients/'
-        },
-        {
-          label: 'Engagements',
-          url: '/clientengagements/:id'
-        },
-        {
-          label: 'Interviews',
-          url: 'interviews/:id'
-        },
-        {
-          label: 'Evidence',
-          url: ''
-        }
-      ]
-    },
 
 },
   {path: 'engagementthemes/:id', component: EngagementThemeComponent, canActivate: [AuthGuardService],
-  data: {
-    title: 'Themes',
-    breadcrumb: [
-      {
-        label: 'Clients',
-        url: '/clients/'
-      },
-      {
-        label: 'Engagements',
-        url: '/clientengagements/:id'
-      },
-      {
-        label: 'Themes',
-        url: ''
-      }
-    ]
-  },
 },
   {path: 'interviewees/:id', component: IntervieweeComponent, canActivate: [AuthGuardService],
-    data: {
-      title: 'Interviewees',
-      breadcrumb: [
-        {
-          label: 'Clients',
-          url: '/clients/'
-        },
-        {
-          label: 'Engagements',
-          url: '/clientengagements/:id'
-        },
-        {
-          label: 'Interviews',
-          url: 'interviews/:id'
-        },
-        {
-          label: 'Interviewees',
-          url: ''
-        }
-      ]
-    },
-
 },
 {path: 'addclient', component: ClientAddComponent , canActivate: [AuthGuardService]},
 {path: 'addclient/:id', component: ClientEditComponent , canActivate: [AuthGuardService]},

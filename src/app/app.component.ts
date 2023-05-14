@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { AuthService } from './auth.service';
 
 @Component({
