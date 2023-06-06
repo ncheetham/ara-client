@@ -75,7 +75,7 @@ export class AuthComponent implements OnInit {
       },
       error => {
         console.log(error) ;
-        this.error = 'An error has occurred!' ;
+        this.error = 'Invalid user!' ;
       }
     )
 

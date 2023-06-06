@@ -13,18 +13,6 @@ import { EngagementListComponent } from './engagement/engagement-list/engagement
 import { ClientEditComponent } from './client/client-edit/client-edit.component';
 import { EngagementEditComponent } from './engagement/engagement-edit/engagement-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
-import { MatLegacyCard as MatCard, MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card' ;
-import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
-import { MatLegacySelect as MatSelect, MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
-import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/material/legacy-autocomplete';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
-import {MatIconModule} from '@angular/material/icon';
 import { InterviewComponent } from './interview/interview.component';
 import { InterviewListComponent } from './interview/interview-list/interview-list.component';
 import { InterviewEditComponent } from './interview/interview-edit/interview-edit.component';
@@ -82,7 +70,6 @@ import { InterviewStatusComponent } from './interview/interview-status/interview
 import { InterviewStatusEditComponent } from './interview/interview-status/interview-status-edit/interview-status-edit.component';
 import { InterviewStatusListComponent } from './interview/interview-status/interview-status-list/interview-status-list.component';
 import { ConductInterviewComponent } from './conduct-interview/conduct-interview.component';
-import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
 import { EngagementQuestionComponent } from './engagement/engagement-question/engagement-question.component';
 import { EngagementQuestionListComponent } from './engagement/engagement-question/engagement-question-list/engagement-question-list.component';
 import { EngagementQuestionEditComponent } from './engagement/engagement-question/engagement-question-edit/engagement-question-edit.component';
@@ -107,7 +94,6 @@ import { ConfirmPasswordDirective } from './directives/confirm-password.directiv
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './shared/auth/auth-interceptor.service';
 import { QuestionCopyComponent } from './question/question-copy/question-copy.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SurveyViewComponent } from './survey/survey-view/survey-view.component';
 import { SurveyListComponent } from './survey/survey-list/survey-list.component';
 import { SurveyCopyListComponent } from './survey/survey-copy-list/survey-copy-list.component';
@@ -132,7 +118,6 @@ import { FindingViewComponent } from './finding/finding-view/finding-view.compon
 import { IntervieweeAllViewComponent } from './interviewee/interviewee-all-view/interviewee-all-view.component';
 import { EngagementHeaderComponent } from './engagement/engagement-header/engagement-header.component';
 import { FileuploadComponent } from './fileupload/fileupload/fileupload.component';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { EngagementIntervieweeComponent } from './interviewee/engagement-interviewee/engagement-interviewee.component';
 import { SurveyQuestionCategoryComponent } from './survey/survey-question-category/survey-question-category.component';
 import { SurveyEditComponent } from './survey/survey-edit/survey-edit.component';
@@ -141,13 +126,28 @@ import { SurveyQuestionListComponent } from './survey/survey-question-list/surve
 import { SurveyQuestionEditComponent } from './survey/survey-question-edit/survey-question-edit.component';
 import { SurveyHeaderComponent } from './survey/survey-header/survey-header.component';
 import { DropdownAnswerComponent } from './survey/dropdown-answer/dropdown-answer.component';
-import {MatGridListModule} from '@angular/material/grid-list';
 import { IntervieweeStatusComponent } from './interviewee/interviewee-status/interviewee-status.component';
 import { SurveyConductComponent } from './survey/survey-conduct/survey-conduct.component';
 import { SurveyQuestionAnswerComponent } from './survey/survey-question-answer/survey-question-answer.component';
 import { SurveyIntervieweeComponent } from './survey/survey-interviewee/survey-interviewee.component';
-import {MatLegacyRadioModule as MatRadioModule} from '@angular/material/legacy-radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxPrintModule } from 'ngx-print';
+
+
 
 @NgModule({
   declarations: [
@@ -282,25 +282,25 @@ import { NgxPrintModule } from 'ngx-print';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
+    MatIconModule,
     MatCheckboxModule,
-    MatSelectModule,
     MatDatepickerModule,
     MatButtonToggleModule,
     MatNativeDateModule,
     MatTableModule,
-    MatButtonModule,
+    MatIconModule,
     MatToolbarModule,
     MatAutocompleteModule,
     HttpClientModule,
     MatProgressBarModule,
     MatIconModule,
     OrgChartModule,
-    MatListModule,
     MatGridListModule,
+    NgxPrintModule,
+    MatSelectModule,
     MatRadioModule,
-    NgxPrintModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
