@@ -59,9 +59,14 @@ export class AuthService {
       lastName: string ;
       fullName?: string ;
       loginToken?: string ;
-      _expirationDate: string;
+      _expirationDate: Date;
     } = JSON.parse(localStorage.getItem('userData') ||'null');
     if(!user) {
+      return ;
+    }
+
+    // Check the expiration Date
+    if(user._expirationDate < new Date) {
       return ;
     }
 

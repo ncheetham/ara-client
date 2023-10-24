@@ -134,6 +134,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatInputModule } from '@angular/material/input' ;
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
@@ -146,6 +147,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxPrintModule } from 'ngx-print';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -281,26 +283,28 @@ import { NgxPrintModule } from 'ngx-print';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatButtonToggleModule,
     MatFormFieldModule,
     MatIconModule,
     MatCheckboxModule,
+    MatInputModule,
     MatDatepickerModule,
-    MatButtonToggleModule,
+    MatButtonModule,
     MatNativeDateModule,
     MatTableModule,
     MatIconModule,
     MatToolbarModule,
     MatAutocompleteModule,
-    HttpClientModule,
     MatProgressBarModule,
     MatIconModule,
-    OrgChartModule,
     MatGridListModule,
-    NgxPrintModule,
     MatSelectModule,
     MatRadioModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    OrgChartModule,
+    NgxPrintModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
