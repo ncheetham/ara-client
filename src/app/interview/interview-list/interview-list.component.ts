@@ -50,13 +50,13 @@ export class InterviewListComponent implements OnInit, OnDestroy {
 
 
   onSelect(interview: Interview) {
-    // Navigate to the Edit Interview Screen -- unless the interview has been conducted - in which case go to review.
 
-    if(interview.interviewStatus.interviewStatusId > 2) {
-      this.router.navigate(['interviewreview', interview.interviewId]) ;
-    }else {
-      this.router.navigate(['viewinterview', interview.interviewId]) ;
-    }
+      // Navigate to the Edit Interview Screen -- unless the interview has been conducted - in which case go to review.
+      if(interview.interviewStatus.interviewStatusId > 2) {
+        this.router.navigate(['interviewreview', interview.interviewId]) ;
+      }else {
+        this.router.navigate(['viewinterview', interview.interviewId]) ;
+      }
 
     }
 

@@ -14,13 +14,17 @@ export class EngagementIntervieweeComponent implements OnInit {
 
   constructor(private eService: EngagementService, private iService: IntervieweeService, private route: ActivatedRoute, private location: Location) { }
 
+  intervieweeId: number ; 
+
   engagement: Engagement;
 
   ngOnInit(): void {
 
     // Find the engagement.
 
-    const engagementId = Number(this.route.snapshot.paramMap.get("id"));
+    const engagementId = Number(this.route.snapshot.paramMap.get("engagementid"));
+    this.intervieweeId = Number(this.route.snapshot.paramMap.get("intervieweeid"));
+    
     this.eService.findEngagement(engagementId).subscribe(x =>
       this.engagement = x
     );

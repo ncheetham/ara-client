@@ -1,0 +1,10 @@
+<div>    <mat-form-field>
+        <mat-label>Add Existing</mat-label>
+        <mat-select [(ngModel)]="selectedId" name="selectedId">
+          <mat-option *ngFor="let i of interviewees" [value]="i.intervieweeId">
+            {{i.fullName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button color="primary" type="button" (click)="onAddInterviewee()">Add</button>
+</div>

@@ -25,6 +25,7 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
 
   @Input() interviewId: number ;
   @Input() engagementId: number ;
+  @Input() intervieweeId: number ; 
 
   constructor(private intervieweeService: IntervieweeService, private iiService: InterviewIntervieweeService, private location: Location) { }
 
@@ -44,13 +45,24 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
 
       )
 
+
       // Get the list of possible superiors.
       this.intervieweeService.findIntervieweeByEngagement(this.engagementId).subscribe(x => {
 
-        //console.log(JSON.stringify(x)) ;
-        this.superiors = x ;
-      }
+          //console.log(JSON.stringify(x)) ;
+          this.superiors = x ;
+        }
       );
+
+      // FInd the interviewee if there is one.
+      if(this.intervieweeId) {
+        this.intervieweeService.findInterviewee(this.intervieweeId).subscribe(i => {
+            this.interviewInterviewee.interviewee = i ; 
+            this.editMode = true ; 
+        })
+      }
+
+     
 
       // Reports To Options
       this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -76,6 +88,8 @@ export class IntervieweeEditComponent implements OnInit, OnDestroy {
     newInterviewee.title = value.title ;
     newInterviewee.role = value.role ;
     newInterviewee.engagementId = this.engagementId ;
+    newInterviewee.emailAddress = value.emailAddress ; 
+    newInterviewee.phone = value.phone ; 
 
     const rt =  this.myControl.value  as Interviewee;
     newInterviewee.reportsToId = rt.intervieweeId ;

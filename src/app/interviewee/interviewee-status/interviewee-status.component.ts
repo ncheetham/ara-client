@@ -27,6 +27,7 @@ export class IntervieweeStatusComponent implements OnInit {
   displayedSurveyColumns = ['survey','status'] ; //,'actions'
   displayedInterviewColumns = ['interview', 'status', 'actions'] ;
   selectedSurveyInterviewee: SurveyInterviewee ;
+  isEdit:boolean = false ; 
 
   constructor(private eService: EngagementService, private iService: IntervieweeService, private route: ActivatedRoute
     , private router: Router, private location: Location, private siService: SurveyIntervieweeService,
@@ -87,6 +88,19 @@ export class IntervieweeStatusComponent implements OnInit {
 
   onBack() {
     this.location.back() ;
+  }
+
+  onEdit() {
+
+    // this.isEdit = true ; 
+
+    //this.router.navigate(['editinterviewee', this.selectedInterviewee.intervieweeId]);
+
+    //this.router.navigate(['editInterviewee', this.engagement.engagementId , this.selectedInterviewee.intervieweeId]) ;
+
+    //this.iiService.interviewIntervieweeSelected.next(this.selectedInterviewee.intervieweeId) ;
+
+    this.router.navigate(['editinterviewee', this.engagement.engagementId, this.selectedInterviewee.intervieweeId]);
   }
 
   onShowBoss() {

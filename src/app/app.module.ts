@@ -148,6 +148,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxPrintModule } from 'ngx-print';
 import { MatButtonModule } from '@angular/material/button';
+import { InterviewIntervieweeAddExistingComponent } from './interviewee/interview-interviewee-add-existing/interview-interviewee-add-existing.component';
+import { DeviceTypeComponent } from './device/device-type/device-type.component';
+import { DeviceTypeListComponent } from './device/device-type-list/device-type-list.component';
+import { DeviceTypeViewComponent } from './device/device-type-view/device-type-view.component';
 
 
 
@@ -275,7 +279,11 @@ import { MatButtonModule } from '@angular/material/button';
     IntervieweeStatusComponent,
     SurveyConductComponent,
     SurveyQuestionAnswerComponent,
-    SurveyIntervieweeComponent
+    SurveyIntervieweeComponent,
+    InterviewIntervieweeAddExistingComponent,
+    DeviceTypeComponent,
+    DeviceTypeListComponent,
+    DeviceTypeViewComponent
   ],
   imports: [
     BrowserModule,

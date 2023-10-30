@@ -5,7 +5,11 @@
   <div class="row col-md-2">
     <div class="tool-bar-button">
       <button mat-raised-button color="primary" (click)="onBack()">Back</button>
+      <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
     </div>
+  </div>
+  <div class = "container" *ngIf="isEdit">
+    <app-interviewee-edit [engagementId]="engagement.engagementId"></app-interviewee-edit>
   </div>
   <div class="row">
     <h2>Interviewee: {{selectedInterviewee.fullName}}</h2>

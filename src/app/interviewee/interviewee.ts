@@ -6,6 +6,8 @@ export class Interviewee {
   role?: string ;
   engagementId: number ;
   reportsToId: number ;
+  emailAddress: string ; 
+  phone: string ; 
 
   constructor(intervieweeId = 0, firstName = '', lastName = '', title = '') {
     this.intervieweeId = intervieweeId ;
@@ -14,6 +16,8 @@ export class Interviewee {
     this.title = title ;
     this.engagementId = 0 ;
     this.reportsToId = 0 ; 
+    this.emailAddress = '';
+    this.phone = '' ;
   }
 
   get fullName() {

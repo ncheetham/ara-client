@@ -1,6 +1,9 @@
 <div class="container" *ngIf="interview" >
   <h2>{{interview.team.name}} {{interview.interviewDate | date }} Interviewees</h2>
   <div class="row col-sm-10">
+    <app-interview-interviewee-add-existing [interviewId]="interview.interviewId" [engagementId]="interview.engagement.engagementId"></app-interview-interviewee-add-existing>
+  </div>
+  <div class="row col-sm-10">
     <app-interviewee-edit [interviewId]="interview.interviewId" [engagementId]="interview.engagement.engagementId"></app-interviewee-edit>
   </div>
   <div class="row col-sm-10">

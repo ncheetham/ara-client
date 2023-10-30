@@ -35,6 +35,21 @@
     </mat-form-field>
   </div>
 
+  <div class="row col-sm-8">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput  name="emailAddress" id="interviewee-email" [(ngModel)]="interviewInterviewee.interviewee.emailAddress">
+    </mat-form-field>
+  </div>
+
+  <div class="row col-sm-8">
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput  name="phone" id="interviewee-phone" [(ngModel)]="interviewInterviewee.interviewee.phone">
+    </mat-form-field>
+  </div>
+
+
   <!-- <div class="row col-sm-8">
       <mat-form-field class="col-sm-5">
         <mat-label>Reports To</mat-label>
