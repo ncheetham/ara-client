@@ -1,0 +1,22 @@
+<table mat-table [dataSource]="deviceSubCategories" class="table mat-elevation-z8">
+    <!-- DeviceType Name-->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Device Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Edit-->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="onDelete(element.deviceSubCategoryId)">Delete</button> </td>
+
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row class="element-row"
+    (click)="onSelect(row)"
+    [class.row-is-clicked]="selectedSubDeviceCategory == row"
+    *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table>
+  

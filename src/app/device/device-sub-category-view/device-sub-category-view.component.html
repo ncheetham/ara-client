@@ -1,0 +1,13 @@
+<div class="row col-sm-10" *ngIf="deviceCategory">
+  <h2>Device Sub-Categories</h2>
+  <div class="row col-sm-10">
+    <h3>{{deviceCategory.name}}</h3>
+    </div>
+  <div class="row col-sm-10">
+    <app-device-sub-category [deviceCategoryId]="deviceCategory.deviceCategoryId"></app-device-sub-category>
+  </div>
+  <div class="row col-sm-10">
+    <app-device-sub-category-list [deviceCategoryId]="deviceCategory.deviceCategoryId"></app-device-sub-category-list>
+  </div>
+
+  

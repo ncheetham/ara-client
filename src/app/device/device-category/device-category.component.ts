@@ -58,7 +58,8 @@ export class DeviceCategoryComponent implements OnInit, OnDestroy {
 
   onShowSubCategories() {
 
-    this.router.navigate(['showsubcategories', this.selectedDeviceCategory.deviceCategoryId]) ; 
+    
+    this.router.navigate(['viewdevicesubcategories', this.selectedDeviceCategory.deviceCategoryId]) ; 
 
   } 
 

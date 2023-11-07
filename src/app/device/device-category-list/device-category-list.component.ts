@@ -12,7 +12,7 @@ import { DeviceCategoryService } from 'src/app/device-category.service';
 export class DeviceCategoryListComponent implements OnInit, OnDestroy  {
 
   deviceCategories: DeviceCategory[] = [] ;
-  displayedColumns: string[] = ['name'] ;
+  displayedColumns: string[] = ['name', 'actions'] ;
 
   selectedDeviceCategory: DeviceCategory ; 
   dcChangedSubscription: Subscription ; 

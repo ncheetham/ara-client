@@ -152,6 +152,12 @@ import { InterviewIntervieweeAddExistingComponent } from './interviewee/intervie
 import { DeviceTypeComponent } from './device/device-type/device-type.component';
 import { DeviceTypeListComponent } from './device/device-type-list/device-type-list.component';
 import { DeviceTypeViewComponent } from './device/device-type-view/device-type-view.component';
+import { DeviceCategoryComponent } from './device/device-category/device-category.component';
+import { DeviceSubCategoryComponent } from './device/device-sub-category/device-sub-category.component';
+import { DeviceCategoryListComponent } from './device/device-category-list/device-category-list.component';
+import { DeviceSubCategoryViewComponent } from './device/device-sub-category-view/device-sub-category-view.component';
+import { DeviceSubCategoryListComponent } from './device/device-sub-category-list/device-sub-category-list.component';
+import { DeviceCategoryViewComponent } from './device/device-category-view/device-category-view.component';
 
 
 
@@ -283,7 +289,13 @@ import { DeviceTypeViewComponent } from './device/device-type-view/device-type-v
     InterviewIntervieweeAddExistingComponent,
     DeviceTypeComponent,
     DeviceTypeListComponent,
-    DeviceTypeViewComponent
+    DeviceTypeViewComponent,
+    DeviceCategoryComponent,
+    DeviceSubCategoryComponent,
+    DeviceCategoryListComponent,
+    DeviceSubCategoryViewComponent,
+    DeviceSubCategoryListComponent,
+    DeviceCategoryViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,4 @@
 <table mat-table [dataSource]="deviceTypes" class="table mat-elevation-z8">
-    <!-- image -->
-    <ng-container matColumnDef="logo">
-     <th mat-header-cell *matHeaderCellDef></th>
-     <td mat-cell *matCellDef="let element">
-       <img [src]="element.url"  class="img-responsive" style="max-height: 40px; max-width: 120px;">
-     </td>
-   </ng-container>
- 
    <!-- DeviceType Name-->
    <ng-container matColumnDef="name">
      <th mat-header-cell *matHeaderCellDef> Device Type </th>

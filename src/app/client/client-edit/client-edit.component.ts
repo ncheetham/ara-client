@@ -51,8 +51,6 @@ export class ClientEditComponent implements OnInit, OnDestroy{
     }
     );
 
-
-
   }
 
   onAddClient(form: NgForm) {

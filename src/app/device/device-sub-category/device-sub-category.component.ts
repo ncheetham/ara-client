@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { DeviceSubCategoryService } from 'src/app/device-sub-category.service';
 import { DeviceSubCategory } from 'src/app/device-subcatgory';
 
@@ -9,11 +10,28 @@ import { DeviceSubCategory } from 'src/app/device-subcatgory';
   templateUrl: './device-sub-category.component.html',
   styleUrls: ['./device-sub-category.component.css']
 })
-export class DeviceSubCategoryComponent {
+export class DeviceSubCategoryComponent implements OnInit, OnDestroy{
 
   constructor(private dscService: DeviceSubCategoryService, private location: Location) {}
 
-  selectedSubCategory: DeviceSubCategory ; 
+
+  dscSelectedSubscription: Subscription ; 
+
+
+  ngOnInit(): void {
+    
+    this.dscSelectedSubscription = this.dscService.subCategorySelected.subscribe(x =>
+      {
+        this.dscService.findById(x).subscribe(x => this.selectedSubCategory = x) ; 
+      }) ; 
+
+
+  }
+  ngOnDestroy(): void {
+    this.dscSelectedSubscription.unsubscribe() ; 
+  }
+
+  selectedSubCategory: DeviceSubCategory = new DeviceSubCategory() ; 
   editMode: boolean = false ; 
 
   @Input({required: true}) deviceCategoryId: number ; 

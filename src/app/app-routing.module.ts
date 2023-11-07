@@ -51,6 +51,9 @@ import { SurveyConductComponent } from './survey/survey-conduct/survey-conduct.c
 import { SurveyIntervieweeComponent } from './survey/survey-interviewee/survey-interviewee.component';
 import { SurveyQuestionAnswerComponent } from './survey/survey-question-answer/survey-question-answer.component';
 import { DeviceTypeViewComponent } from './device/device-type-view/device-type-view.component';
+import { DeviceSubCategoryComponent } from './device/device-sub-category/device-sub-category.component';
+import { DeviceSubCategoryViewComponent } from './device/device-sub-category-view/device-sub-category-view.component';
+import { DeviceCategoryViewComponent } from './device/device-category-view/device-category-view.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
@@ -115,7 +118,9 @@ const routes: Routes = [
 {path: 'conductintervieweesurvey/:surveyintervieweeid', component: SurveyQuestionAnswerComponent, canActivate: [AuthGuardService]},
 {path: 'dropdown', component: DropdownAnswerComponent},
 {path: 'editinterviewee/:engagementid/:intervieweeid', component: EngagementIntervieweeComponent, canActivate: [AuthGuardService]},
-{path: 'devicetypes', component: DeviceTypeViewComponent, canActivate: [AuthGuardService]}
+{path: 'devicetypes', component: DeviceTypeViewComponent, canActivate: [AuthGuardService]},
+{path: 'viewdevicesubcategories/:devicecategoryid', component: DeviceSubCategoryViewComponent, canActivate: [AuthGuardService]},
+{path: 'viewdevicecategories', component: DeviceCategoryViewComponent, canActivate: [AuthGuardService]}
 
 ];
 
