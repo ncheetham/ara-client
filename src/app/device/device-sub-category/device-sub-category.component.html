@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onAdd(f)" #f="ngForm">
+        <div class="row" hidden>
+            <mat-form-field class="col-sm-5 form-group" appearance="fill">
+              <mat-label for="device-sub-category-id">Id</mat-label>
+            <input
+              matInput
+              id="device-sub-category-id"
+              class="form-control"
+              name="deviceSubCategoryId"
+              [(ngModel)]="selectedSubCategory.deviceSubCategoryId" placeholder="id"
+              readonly>
+         </mat-form-field>
+         </div>
+        <div class="row">
+          <mat-form-field class="col-sm-5 form-group" appearance="fill">
+            <mat-label for="name">Name:</mat-label>
+            <input
+              type="text"
+              matInput
+              id="name"
+              class="form-control"
+              name="name"
+              [(ngModel)]="selectedSubCategory.name" placeholder="name"
+              required>
+          </mat-form-field>
+          </div>
+         
+    
+            <div class="button-tool-bar">
+              <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add'}}</button>
+              <button mat-raised-button color="primary" *ngIf="editMode" (click)="onDelete()">Delete</button>
+              <button mat-raised-button color="primary" type="button" (click)="onCancel()" >Back</button>
+            </div>
+        </form>
+    </div>
+</div>
