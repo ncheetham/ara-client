@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class EngagementViewComponent implements OnInit {
 
   engagement: Engagement ;
+  panelOpenState: boolean ; 
 
   constructor(private route: ActivatedRoute, private location: Location, private router: Router, private engagementService: EngagementService) { }
 

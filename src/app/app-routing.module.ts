@@ -54,6 +54,8 @@ import { DeviceTypeViewComponent } from './device/device-type-view/device-type-v
 import { DeviceSubCategoryComponent } from './device/device-sub-category/device-sub-category.component';
 import { DeviceSubCategoryViewComponent } from './device/device-sub-category-view/device-sub-category-view.component';
 import { DeviceCategoryViewComponent } from './device/device-category-view/device-category-view.component';
+import { DeviceViewComponent } from './device/device-view/device-view.component';
+import { IntervieweeViewComponent } from './interviewee/interviewee-view/interviewee-view.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
@@ -120,8 +122,9 @@ const routes: Routes = [
 {path: 'editinterviewee/:engagementid/:intervieweeid', component: EngagementIntervieweeComponent, canActivate: [AuthGuardService]},
 {path: 'devicetypes', component: DeviceTypeViewComponent, canActivate: [AuthGuardService]},
 {path: 'viewdevicesubcategories/:devicecategoryid', component: DeviceSubCategoryViewComponent, canActivate: [AuthGuardService]},
-{path: 'viewdevicecategories', component: DeviceCategoryViewComponent, canActivate: [AuthGuardService]}
-
+{path: 'viewdevicecategories', component: DeviceCategoryViewComponent, canActivate: [AuthGuardService]},
+{path: 'viewdevice/:engagementId', component: DeviceViewComponent, canActivate: [AuthGuardService]},
+{path: 'viewinterviewee/:intervieweeId', component: IntervieweeViewComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

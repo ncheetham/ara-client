@@ -1,25 +1,38 @@
 <div class="container" *ngIf="engagement">
-<div class="row">
-  <app-engagement-header [engagement]="engagement"></app-engagement-header>
-</div>
-<div class="row">
-  <!-- Survey Count -->
-  <app-survey-dashboard [engagementId]="engagement.engagementId"></app-survey-dashboard>
+
+  <!-- <div class="row">
+    <app-engagement-header [engagement]="engagement"></app-engagement-header>
   </div>
-<div class="row">
+
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel> -->
+
+
+
+<mat-accordion>
+
+  <!-- Survey Count --> 
+<app-survey-dashboard [engagementId]="engagement.engagementId"></app-survey-dashboard> 
+
 <!-- Interview Count -->
 <app-interview-dashboard [engagementId]="engagement.engagementId"></app-interview-dashboard>
-</div>
-<div class="row">
-  <!-- Evidence Count -->
-  <app-evidence-dashboard [engagementId]="engagement.engagementId"></app-evidence-dashboard>
-  </div>
-  <div class="row">
-    <!-- Findings Count -->
-    <app-finding-dashboard [engagementId]="engagement.engagementId"></app-finding-dashboard>
-    </div>
-  <div class="row">
-    <!-- Interviewees -->
-    <app-interviewee-dashboard [engagementId]="engagement.engagementId"></app-interviewee-dashboard>
-  </div>
-</div>
+
+<!-- Evidence Count -->
+<app-evidence-dashboard [engagementId]="engagement.engagementId"></app-evidence-dashboard>
+  <!-- Findings Count -->
+<app-finding-dashboard [engagementId]="engagement.engagementId"></app-finding-dashboard>
+  <!-- Interviewees -->
+<app-interviewee-dashboard [engagementId]="engagement.engagementId"></app-interviewee-dashboard>
+
+  <!-- Devices -->
+<app-device-dashboard [engagementId]="engagement.engagementId"></app-device-dashboard>

@@ -48,6 +48,7 @@ export class ClientService {
 
     return this.httpClient.get<Client>(url).pipe(
       tap((nc: Client) => {
+        // console.log(JSON.stringify(nc));
         catchError(this.handleError('findClient', nc)) ;
       }
     ));

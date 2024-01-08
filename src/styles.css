@@ -20,21 +20,25 @@ div.button-tool-bar  {
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
-  border-color: currentColor;
+  border-color: black;
+  background-color :lightgray;
 }
 
 tr.detail-row {
   height: 0;
 }
 
-tr.element-row:not(.example-expanded-row):hover {
+tr.element-row:hover {
   background: whitesmoke;
 }
 
-tr.element-row:not(.example-expanded-row):active {
+tr.element-row:active {
   background: #efefef;
 }
 
+.element-row td {
+  border-bottom-width: 0;
+}
 
 .row-is-clicked {
   font-weight: bold;

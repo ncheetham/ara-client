@@ -158,6 +158,11 @@ import { DeviceCategoryListComponent } from './device/device-category-list/devic
 import { DeviceSubCategoryViewComponent } from './device/device-sub-category-view/device-sub-category-view.component';
 import { DeviceSubCategoryListComponent } from './device/device-sub-category-list/device-sub-category-list.component';
 import { DeviceCategoryViewComponent } from './device/device-category-view/device-category-view.component';
+import { DeviceComponent } from './device/device/device.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
+import { DeviceViewComponent } from './device/device-view/device-view.component';
+import { DeviceDashboardComponent } from './device/device-dashboard/device-dashboard.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -295,7 +300,11 @@ import { DeviceCategoryViewComponent } from './device/device-category-view/devic
     DeviceCategoryListComponent,
     DeviceSubCategoryViewComponent,
     DeviceSubCategoryListComponent,
-    DeviceCategoryViewComponent
+    DeviceCategoryViewComponent,
+    DeviceComponent,
+    DeviceListComponent,
+    DeviceViewComponent,
+    DeviceDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -324,7 +333,8 @@ import { DeviceCategoryViewComponent } from './device/device-category-view/devic
     MatCardModule,
     HttpClientModule,
     OrgChartModule,
-    NgxPrintModule
+    NgxPrintModule,
+    MatExpansionModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]

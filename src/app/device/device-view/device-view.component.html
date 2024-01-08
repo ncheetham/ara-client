@@ -1,0 +1,11 @@
+<div class="container" *ngIf="engagement">
+    <h2>{{engagement.name}} Devices</h2>
+    
+      <div class="row">
+        <app-device [engagementId]="this.engagement.engagementId"></app-device>
+      </div>
+      <div class="row">
+        <app-device-list [engagementId]="this.engagement.engagementId"></app-device-list>
+      </div>
+      
+    </div>

@@ -5,7 +5,7 @@ export class IntervieweeVO implements TreeNode {
   name: string ;
   title: string ;
   children: IntervieweeVO[] ;
-  hideChildren: boolean ;
+  hideChildren?: boolean ;
 
   constructor() {
     this.children = []

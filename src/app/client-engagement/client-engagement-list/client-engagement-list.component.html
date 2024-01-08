@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="client">
   <table mat-table [dataSource]="engagements" class="mat-elevation-z8 table">
     <!-- Name -->
   <ng-container matColumnDef="name">

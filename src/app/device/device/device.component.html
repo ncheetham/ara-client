@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-xs-12">
+    <form (ngSubmit)="onAdd(f)" #f="ngForm">
+
+        <!-- deviceId: number ;  -->
+        <div class="row" hidden="true">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>ID:</mat-label>
+              <input matInput type="text"
+              id="device-id" name="deviceId" required placeholder="id"
+              [(ngModel)]="selectedDevice.deviceId" >
+            </mat-form-field>
+        </div>
+        <!-- engagement: Engagement ;  -->
+        <div class="row" hidden="true">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>Engagement ID:</mat-label>
+              <input matInput type="text"
+              id="device-engagement-id" name="engagementId" required placeholder="engagementId"
+              [(ngModel)]="selectedDevice.engagement.engagementId" >
+            </mat-form-field>
+        </div>
+        <!-- name: string ;  -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>Name:</mat-label>
+              <input matInput type="text"
+              id="device-name" name="name" required placeholder="name"
+              [(ngModel)]="selectedDevice.name" >
+            </mat-form-field>
+        </div>
+        <!-- location: string ;  -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>Location:</mat-label>
+              <input matInput type="text"
+              id="device-location" name="location" required placeholder="location"
+              [(ngModel)]="selectedDevice.location" >
+            </mat-form-field>
+        </div>
+        <!-- ITOwner: string ;  -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>IT Owner:</mat-label>
+              <input matInput type="text"
+              id="device-itowner" name="itowner" required placeholder="IT Owner"
+              [(ngModel)]="selectedDevice.ITOwner" >
+            </mat-form-field>
+        </div>
+        <!-- OSFamily: string ; -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>OS Family:</mat-label>
+              <input matInput type="text"
+              id="device-os-family" name="osfamily" required placeholder="OS Family"
+              [(ngModel)]="selectedDevice.OSFamily" >
+            </mat-form-field>
+        </div>
+        <!-- applicationServiceName: string ;  -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>Application/Service Name:</mat-label>
+              <input matInput type="text"
+              id="device-as-name" name="asname" required placeholder="Application/Service Name"
+              [(ngModel)]="selectedDevice.applicationServiceName" >
+            </mat-form-field>
+        </div>
+
+        <!-- environment: string ;  -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>Environment:</mat-label>
+              <input matInput type="text"
+              id="device-environment" name="environment" required placeholder="environment"
+              [(ngModel)]="selectedDevice.environment" >
+            </mat-form-field>
+        </div>
+
+        <!-- lifecycleStatus: string ;  -->
+        <div class="row">
+            <mat-form-field class="col-sm-10 form-group">
+              <mat-label>Lifecycle Status:</mat-label>
+              <input matInput type="text"
+              id="device-lifecycle-status" name="lifecycleStatus" required placeholder="Lifecycle Status"
+              [(ngModel)]="selectedDevice.lifecycleStatus" >
+            </mat-form-field>
+        </div>
+
+        <!-- deviceType: DeviceType ;  -->
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select [(ngModel)]="selectedDevice.deviceType.deviceTypeId" name="deviceType" >
+              <mat-option *ngFor="let t of deviceTypes" [value]="t.deviceTypeId">
+                {{t.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <!-- category: DeviceCategory ;  -->
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="selectedDevice.category.deviceCategoryId" name="category" (selectionChange)="onCategorySelect($event.value)">
+              <mat-option *ngFor="let c of deviceCategories" [value]="c.deviceCategoryId">
+                {{c.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <!-- subCategory: DeviceSubCategory ; -->
+        <mat-form-field>
+            <mat-label>Sub Category</mat-label>
+            <mat-select [(ngModel)]="selectedDevice.subCategory.deviceSubCategoryId" name="subCategory">
+              <mat-option *ngFor="let c of deviceSubCategories" [value]="c.deviceSubCategoryId">
+                {{c.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="button-tool-bar">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add'}}</button>
+            <button mat-raised-button color="primary" *ngIf="editMode" (click)="onDelete()">Delete</button>
+            <button mat-raised-button color="primary" type="button" (click)="onCancel()" >Back</button>
+          </div>
+
+    </form>
+    </div>
+</div>

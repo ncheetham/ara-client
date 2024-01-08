@@ -4,6 +4,7 @@ import { InterviewStatus } from 'src/app/interview/interview-status/interviewsta
 import { IntervieweeService } from 'src/app/interviewee/interviewee.service';
 import { Interviewee } from '../interviewee';
 import { IntervieweeStatusVO } from '../intervieweestatus';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-interviewee-all-list',
@@ -17,7 +18,7 @@ export class IntervieweeListAllComponent implements OnInit, OnDestroy {
   selectedInterviewee: Interviewee ;
   @Input() engagementId: number ;
 
-  constructor(private iService: IntervieweeService) { }
+  constructor(private iService: IntervieweeService, private router: Router) { }
 
 
   ngOnDestroy(): void {
@@ -36,6 +37,7 @@ export class IntervieweeListAllComponent implements OnInit, OnDestroy {
   onSelect(i: Interviewee) {
 
     this.selectedInterviewee = i ;
+    this.router.navigate(['viewinterviewee', i.intervieweeId]); 
 
   }
 

@@ -1,6 +1,12 @@
-<div class="row">
-  <h2>Evidence</h2>
-</div>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <h2>Evidence</h2>
+    </mat-panel-title>
+    <mat-panel-description>
+      Engagement Evidence
+    </mat-panel-description>
+  </mat-expansion-panel-header>
 <div class="row">
   <p>Evidence Count: {{evidences.length}}</p>
 </div>
@@ -31,3 +37,5 @@
       *matRowDef="let row; columns: displayedColumns;"></tr>
     </table> -->
 </div>
+</div>
+</mat-expansion-panel>

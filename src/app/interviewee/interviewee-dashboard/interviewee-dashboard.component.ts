@@ -30,7 +30,7 @@ export class IntervieweeDashboardComponent implements OnInit {
         const root: IntervieweeVO = new IntervieweeVO() ;
         root.name = e.client.name ;
         root.title = e.name ;
-
+        root.hideChildren = false ; 
         root.children = x ;
 
         this.data = root ;
