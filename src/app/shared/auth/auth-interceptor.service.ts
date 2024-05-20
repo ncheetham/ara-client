@@ -2,36 +2,53 @@ import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } fro
 import { Injectable } from '@angular/core';
 import { exhaustMap, Observable, take } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+import { jwtDecode } from 'jwt-decode' ; 
 import { User } from 'src/app/user/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthInterceptorService implements HttpInterceptor{
+export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  constructor(private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     //console.log("in Interceptor") ;
 
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user: User) => {
+    if ('token' in localStorage) {
 
-        if(!user.loginToken) {
-          return next.handle(req) ;
+      const token = localStorage.getItem('token') ; 
+
+      if(token) {
+        let decodedToken = jwtDecode(token) ; 
+
+        const isExpired = decodedToken && decodedToken.exp
+        ? decodedToken.exp < Date.now() / 1000
+        :false ;
+
+        if(isExpired) {
+
+          localStorage.removeItem('token') ; 
+          localStorage.removeItem('user') ; 
+
+          this.router.navigateByUrl('/login')
+        }else {
+
+          //console.log("Has a login token");
+          
+          // Edit the request.
+          const request = req.clone({ headers: req.headers.set('Authorization', `bearer ${token}` )})
+          
+          return next.handle(request);
+
         }
-        //console.log("Has a login token");
-        const headers= new HttpHeaders()
-        .set('Authorization', 'Bearer ' + user.loginToken)
 
-        // Edit the request.
-        const modReq = req.clone(
-          { headers :  headers })
-        return next.handle(modReq) ;
-      })
-    );
+      }
+    }
+
+    return next.handle(req);
 
   }
 }

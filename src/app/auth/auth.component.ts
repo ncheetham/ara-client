@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
     const password = value.password ;
     const email = value.emailaddress ;
 
-    const newUser: User = new User(0, email, value.firstName, value.lastName, value.password, undefined, undefined,undefined) ;
+    const newUser: User = {userId: 0, firstName: '' , lastName: '', emailAddress: '', fullName: '' , loginToken: ''}  ;
 
     this.isLoading = true ;
 
@@ -69,17 +69,25 @@ export class AuthComponent implements OnInit {
   authenticate(userName: string, password: string) {
 
 
-    return this.authService.authenticate(userName, password).subscribe(
-      responseData => {
-        this.router.navigate(['/clients']);
-      },
-      error => {
-        console.log(error) ;
-        this.error = 'Invalid user!' ;
-      }
-    )
+    this.authService.authenticate(userName, password).subscribe(
+      (user: User) => {
 
-  }
 
+        if(user) {
+
+            console.log('User returned from Authenticate') ;
+
+            
+            localStorage.setItem('user', JSON.stringify(user)) ; 
+            localStorage.setItem('token', user.loginToken) ; 
+
+
+            this.router.navigate(['/clients']);
+        }
+  },
+error => {
+  this.error = 'Invalid User' ; 
+}) ; 
+}
 
 }

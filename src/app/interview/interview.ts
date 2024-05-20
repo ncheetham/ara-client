@@ -18,7 +18,7 @@ export class Interview {
   constructor() {
     this.interviewId = 0 ;
     this.engagement = new Engagement() ;
-    this.enteredByUser = new User(0, '', '', '',undefined, undefined, undefined, undefined) ;
+    this.enteredByUser = {userId: 0, firstName: '', lastName: '', fullName: '', emailAddress: '', loginToken: ''} ;
     this.meetingType = new MeetingType() ;
     this.interviewStatus = new InterviewStatus() ;
     this.interviewStatus.interviewStatusId = 1 ;

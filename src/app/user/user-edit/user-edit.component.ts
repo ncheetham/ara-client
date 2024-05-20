@@ -14,7 +14,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   @ViewChild('f', {static: false}) uForm: NgForm ;
 
-  selectedUser: User = new User(0, '' , '', '', undefined, undefined, undefined, undefined);
+  selectedUser: User = {userId: 0, firstName: '', lastName: '', fullName: '', loginToken: '', emailAddress: ''};
 
   userSelectedSubscription: Subscription ;
   editMode = false ;
@@ -39,8 +39,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   onAddUser(form: NgForm) {
 
-    const newUser: User = new User(this.selectedUser.userId, this.selectedUser.emailAddress,
-      this.selectedUser.firstName, this.selectedUser.lastName, undefined, undefined, undefined, undefined) ;
+    const newUser: User = this.selectedUser ;
 
     if(this.editMode) {
 

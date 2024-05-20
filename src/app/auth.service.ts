@@ -11,7 +11,7 @@ export class AuthService {
 
 
   //user: Subject<User | null> = new BehaviorSubject<User | null>(null) ;
-  user = new BehaviorSubject<User>(new User(0,'','','', undefined, undefined,undefined,undefined)) ;
+  user = new BehaviorSubject<User>({userId: 0 , firstName: '', lastName: '', fullName: '', emailAddress: '', loginToken: ''}) ;
 
   private baseUrl: string = "/api/auth/" ;
 
@@ -35,50 +35,23 @@ export class AuthService {
 
     // Post the request
     return this.httpClient.post<User>(url,{},httpOptions).pipe(
-      tap((u: User)=> {
-        console.log('User returned from Authenticate') ;
-
-        // Need to set the expiration date - for one hour hence.
-        u.expirationDate = new Date(new Date().getMilliseconds() + 1000 * 60 * 60);
-
-        this.user.next(u);
-
-        // Store the user.
-        localStorage.setItem('userData', JSON.stringify(u));
-
-        catchError(this.handleError('authenticate', u))
-      })
-    )
+      tap((u: User) => {
+        this.user.next(u) ; 
+        catchError(this.handleError('authenticate', u)) ;
+    })
+  ); 
   }
 
   autoLogon() {
-    const user: {
-      userId: number ;
-      emailAddress: string ;
-      firstName: string ;
-      lastName: string ;
-      fullName?: string ;
-      loginToken?: string ;
-      _expirationDate: Date;
-    } = JSON.parse(localStorage.getItem('userData') ||'null');
-    if(!user) {
-      return ;
+
+    if('user' in localStorage) {
+      const user = localStorage.getItem('user') ; 
+
+
+
+    }else {
+      return ; 
     }
-
-    // Check the expiration Date
-    if(user._expirationDate < new Date) {
-      return ;
-    }
-
-    const loadedUser = new User(user.userId, user.emailAddress, user.firstName, user.lastName, '', user.fullName, user.loginToken, new Date(user._expirationDate)) ;
-
-    if(loadedUser) {
-      this.user.next(loadedUser) ;
-    }
-
-
-
-
 
   }
 
@@ -98,8 +71,9 @@ export class AuthService {
   }
 
   logout() {
-    this.user.next(new User(0, '','','',undefined,undefined,undefined,undefined)) ;
+    // this.user.next({}) ;
     localStorage.removeItem('userData') ;
+    localStorage.removeItem('token') ; 
     this.router.navigate(['/auth']) ;
     if(this.authExpirationTimer) {
       clearTimeout(this.authExpirationTimer) ;
