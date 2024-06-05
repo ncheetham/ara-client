@@ -16,7 +16,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
   displayedColumns = ['logo', 'name', 'actions'] ;
 
 
-  constructor(private clientService: ClientService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private clientService: ClientService, private router: Router) { }
 
   ngOnDestroy(): void {
 
